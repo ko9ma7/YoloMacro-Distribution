@@ -1,12 +1,12 @@
-# YoloMacro 1.4.1 User Manual
+# YoloMacro 1.4.2 User Manual
 
-[한국어 설명서](USER_MANUAL.md) · [English Manual](USER_MANUAL_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
+[한국어 설명서](USER_MANUAL.ko.md) · [English Manual](USER_MANUAL.en.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
 This manual covers the normal path from installation to production-safe RPA execution, camera inspection, AOI training, YOLO labeling, and model connection.
 
 ## 1. Install and verify
 
-1. Download `YoloMacro-v1.4.1-win-x64.zip` from the [public v1.4.1 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.1).
+1. Download `YoloMacro-v1.4.2-win-x64.zip` from the [public v1.4.2 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.2).
 2. Extract the complete ZIP. Do not run the executable from inside the archive.
 3. Install the .NET 8 Desktop Runtime if Windows requests it.
 4. Run `YoloMacro.exe`.
@@ -18,7 +18,7 @@ If activation is disabled, expired, invalid, update-required, network-unavailabl
 
 - Manifest: `https://ko9ma7.github.io/YoloMacro-Distribution/manifest.json`
 - The app validates schema, expiry, minimum version, ECDSA signature, and update URLs.
-- The small **GitHub** button opens the private source page in the default browser. Browser authentication is separate from equipment activation.
+- The small **GitHub** button opens the public [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution) repository in the default browser. Browser authentication is separate from equipment activation.
 - The app does not receive or store the browser's GitHub password or token.
 
 ## 3. Choose the inspection input
@@ -62,6 +62,15 @@ Use the smallest practical ROI. It improves speed and reduces false positives.
 5. Disable Observe mode only after the decision flow is stable.
 6. Use F5/F6 or the Run/Stop buttons for controlled operation.
 
+### Ordered flow, delays and input
+
+- Top-level items are evaluated in visible order. When a folder condition matches, enabled children run from top to bottom before the next top-level item.
+- With **Refresh screen after action** enabled, input discards the old frame, captures the updated screen, and continues with the next item. Only the list end restarts at item zero.
+- Each action runs as `pre-delay → mouse/key input → post-delay → next item`; logs show the actual values and next item.
+- **Rapid Click** reuses one detected position for 1 to 10,000 left clicks with a 0 to 1,000 ms interval. F6 cancels the loop.
+- Captured keys use visible syntax such as `1`, `{SPACE}`, `{ENTER}`, or `^c`. Inactive delivery sends real key-down/key-up messages without duplicating printable characters.
+- `▶` and `📁` are display-only markers. They are never persisted, and old repeated markers are normalized on load.
+
 ## 7. YOLO labeling and training
 
 1. Capture images from the current target or camera.
@@ -72,7 +81,7 @@ Use the smallest practical ROI. It improves speed and reduces false positives.
 6. Train externally, export to ONNX, then load the model from the YOLO menu.
 7. Register model SHA-256, input size, and class names before production use.
 
-See the canonical [YOLO labeling and training guide](YOLO_LABELING_TRAINING_GUIDE.md) for detailed training commands.
+Export training and validation data only after review and quality checks, then keep the trained model and customer dataset outside this public distribution repository.
 
 ## 8. AOI inspection
 

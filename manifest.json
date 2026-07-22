@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "enabled": true,
   "minimumVersion": "1.4.0",
-  "latestVersion": "1.4.1",
-  "publishedAt": "2026-07-21T22:12:09.2183169+00:00",
-  "expiresAt": "2026-10-19T22:12:09.2183169+00:00",
-  "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v1.4.1/YoloMacro.CoreLib.dll",
-  "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.1",
-  "dllVersion": "1.4.1",
-  "dllSha256": "a6875ea371dd3af9bfed99776d8d0cb32b94f4696ec08b72d2c1e5d2b2f8d968",
-  "signature": "FvCsCmYlbVerhxa6fMv33/NrNYrpHZNQ08muhZM3YBV2imseN1aKXW1hfOon/2LumSKZ/O1qwFRZPimtwJH2XQ=="
+  "latestVersion": "1.4.2",
+  "publishedAt": "2026-07-22T18:58:27.3765708+00:00",
+  "expiresAt": "2026-08-05T18:58:27.3765708+00:00",
+  "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v1.4.2/YoloMacro.CoreLib.dll",
+  "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.2",
+  "dllVersion": "1.4.2",
+  "dllSha256": "8785a90771c9840636fe7ae850ed094f48146c328c0670a52ff4b70923db9646",
+  "signature": "T2m6wu+cmVqR/EFNj7sIR57rtMDZtzshbJrjbZq+y0vnBQruVeuZZxDKqut/1jTYgF6NbPJT6G+3CmGtVqDOfQ=="
 }

@@ -1,6 +1,6 @@
 # Remote Activation and Secure Update Operations
 
-[한국어 운영 가이드](REMOTE_ACTIVATION_AND_UPDATE.md) · [English](REMOTE_ACTIVATION_AND_UPDATE_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
+[한국어 운영 가이드](REMOTE_ACTIVATION_AND_UPDATE.ko.md) · [English](REMOTE_ACTIVATION_AND_UPDATE.en.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
 ## Purpose
 
@@ -46,4 +46,4 @@ The client revalidates the signed manifest, downloads only from trusted HTTPS ho
 
 ## GitHub button behavior
 
-The UI button opens the private source repository in the default browser. Browser authentication and equipment activation are intentionally independent. YoloMacro never reads or stores the browser's GitHub credentials.
+The UI button opens the public [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution) repository in the default browser. Browser authentication and equipment activation are intentionally independent. YoloMacro never reads or stores the browser's GitHub credentials.

@@ -1,33 +1,26 @@
 # YoloMacro 전체 사용자 설명서
 
-이 문서는 YoloMacro를 처음 실행하는 단계부터 화면 인식 자동화, AOI 검사, YOLO 데이터 제작과 모델 연결까지 전체 흐름을 안내하는 문서의 시작점입니다. 현재 정식 프로그램 버전은 `1.4.1`입니다.
+이 문서는 YoloMacro를 처음 실행하는 단계부터 화면 인식 자동화, AOI 검사, YOLO 데이터 제작과 모델 연결까지 전체 흐름을 안내하는 문서의 시작점입니다. 현재 정식 프로그램 버전은 `1.4.2`입니다.
 
-[한국어](USER_MANUAL.md) · [English](USER_MANUAL_EN.md) · [공개 GitHub Pages 문서](https://ko9ma7.github.io/YoloMacro-Distribution/)
+[한국어](USER_MANUAL.ko.md) · [English](USER_MANUAL.en.md) · [공개 GitHub Pages 문서](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-## v1.4.1 시작 화면과 활성화
+## v1.4.2 시작 화면과 활성화
 
 - 서명된 원격 활성화가 정상이면 프로그램은 항상 `RPA 실행` 화면으로 시작합니다.
 - 원격 비활성화, 만료, 서명 오류, 네트워크/응답 오류, 최소 버전 미달인 경우에만 `설정`의 활성화 화면으로 이동합니다.
 - 설정의 `다시 확인`이나 업데이트 확인이 성공했을 때는 현재 보고 있던 탭을 유지합니다.
 - 비활성 상태에서도 상단 `로컬 진단`으로 핵심 DLL, YOLO 모델, 대상 창과 설정 카메라를 확인할 수 있습니다.
-- `GitHub` 버튼은 기본 브라우저로 Private 소스 저장소를 엽니다. 프로그램은 GitHub 비밀번호나 토큰을 저장하지 않습니다.
+- `GitHub` 버튼은 기본 브라우저로 공개 실행 파일·문서 저장소인 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)을 엽니다. 프로그램은 GitHub 비밀번호나 토큰을 저장하지 않습니다.
 - 기본 활성화 주소는 `https://ko9ma7.github.io/YoloMacro-Distribution/manifest.json`이며 이전 주소는 자동으로 새 주소로 이전됩니다.
-
-![YoloMacro 기본 실행 화면](../artifacts/main-run-safety-default.png)
 
 ## 문서 지도
 
 | 하고 싶은 일 | 읽을 문서 |
 |---|---|
-| 설치 후 처음 프로젝트를 만들고 실행하기 | [RPA 실행 완전 가이드](RPA_EXECUTION_GUIDE.md) |
-| 정상/불량 샘플로 화면 품질 검사하기 | [AOI 학습과 검사 가이드](AOI_GUIDE.md) |
-| 이미지에 박스를 그리고 YOLO 학습·ONNX 연결까지 완료하기 | [YOLO 라벨링·학습·연결 A-Z](YOLO_LABELING_TRAINING_GUIDE.md) |
-| 메뉴와 설정을 빠르게 찾아보기 | [전체 기능 참고서](FEATURE_REFERENCE.md) |
-| 관찰 실행의 안전 범위 이해하기 | [관찰 실행 안내](OBSERVE_MODE_1.2.1.md) |
-| 긴 작업 목록의 `▶`와 따라가기 사용하기 | [작업 목록 표시 안내](RUN_LIST_TRACKING_1.2.2.md) |
-| 여러 액션의 설정만 복사하고 Replay 용량 관리하기 | [일괄 설정·창 복구·Replay 관리](BATCH_SETTINGS_AND_REPLAY_1.3.0.md) |
-| 프로젝트 파일과 이미지 저장 위치 이해하기 | [프로젝트 저장 구조](project-storage.md) |
-| 보안과 업데이트 방식 확인하기 | [보안·업데이트](SECURITY_AND_UPDATE.md) |
+| 설치·실행·카메라·YOLO·AOI·라벨링 전체 흐름 | 이 문서 |
+| v1.4.2 변경과 호환성 | [한국어 릴리즈 노트](RELEASE_NOTES.v1.4.2.ko.md) |
+| 활성화, 업데이트, 롤백 운영 | [원격 활성화·업데이트 가이드](REMOTE_ACTIVATION_AND_UPDATE.ko.md) |
+| 영문 설명 | [English User Manual](USER_MANUAL.en.md) |
 
 ## YoloMacro가 하는 일
 
@@ -60,6 +53,15 @@ flowchart LR
 8. 로그와 `▶` 현재 검사 표시가 예상대로 움직이는지 확인합니다.
 9. 관찰 실행을 끈 뒤 실제 실행합니다.
 10. `파일 → 저장`으로 프로젝트를 저장합니다.
+
+## 폴더 실행 순서와 입력
+
+- 상위 작업은 화면에 보이는 순서대로 검사합니다. 조건 폴더가 발견되면 체크된 하위 작업을 위에서 아래로 수행하고 다음 상위 작업으로 진행합니다.
+- `액션 후 화면 갱신`이 켜져 있으면 클릭이나 키 입력 직후 기존 캡처를 버리고 새 화면에서 다음 항목을 검사합니다. 목록 끝에서만 0번 항목으로 돌아갑니다.
+- 액션은 `동작 전 대기 → 마우스/키 입력 → 동작 후 대기 → 다음 항목` 순서입니다. 실행 로그에 대기값과 다음 항목이 표시됩니다.
+- 한 번 찾은 위치를 반복 클릭하려면 `고속 반복 좌클릭`을 선택합니다. 1~10,000회와 0~1,000ms 간격을 설정할 수 있고 F6으로 중단할 수 있습니다.
+- 키 감지는 숫자 `1`, Space `{SPACE}`, Enter `{ENTER}`, Ctrl+C `^c`처럼 저장합니다. 기본 비활성 입력이 차단되는 게임·앱플레이어에서만 실제 입력 또는 Interception을 사용합니다.
+- `▶`와 `📁`는 화면 표시 전용이며 이름에 저장되지 않습니다. 이전 프로젝트의 반복 접두사도 불러올 때 정리됩니다.
 
 ## 화면 구성
 
@@ -108,4 +110,4 @@ YoloMacro의 주 화면은 네 개 탭으로 구성됩니다.
 
 ## 문서와 구현의 기준
 
-YoloMacro 내부 기능 설명은 이 저장소의 `v1.4.1` 코드와 실제 UI를 기준으로 작성했습니다. YOLO 학습·ONNX 변환 명령은 최신 Ultralytics 공식 문서를 기준으로 하며, 설치된 Ultralytics 버전에 따라 기본 모델 이름이나 옵션이 달라질 수 있습니다.
+YoloMacro 내부 기능 설명은 `v1.4.2` 코드와 실제 UI를 기준으로 작성했습니다. YOLO 학습·ONNX 변환 명령은 설치된 Ultralytics 버전에 따라 기본 모델 이름이나 옵션이 달라질 수 있습니다.

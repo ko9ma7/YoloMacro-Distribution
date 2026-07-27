@@ -1,53 +1,432 @@
-# YoloMacro Distribution
+# YoloMacro
 
-[한국어](#한국어) · [English](#english) · [최신 릴리즈 / Latest release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/latest)
+[한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-## 한국어
+현재 정식 버전은 `1.4.2`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
-YoloMacro의 공개 배포 전용 저장소입니다. 소스 코드와 내부 구자료는 Private `ko9ma7/YoloMacro`에 보존되며, 이곳에는 검증된 설치 파일·Core DLL·SBOM·서명 활성화 manifest·공개 사용자 문서만 제공합니다.
+YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.
 
-### 다운로드와 시작
+단순히 좌표를 누르는 매크로가 아니라, 현재 화면에서 이미지나 상태를 찾고 그 결과에 따라 다음 동작을 선택하는 방식으로 동작합니다. 이미지 리스트 안에서 OpenCV, YOLO, AOI, ROI 게이지, 키보드 입력, 마우스 입력, 분기 로직을 섞어 사용할 수 있습니다.
 
-1. [v1.4.2 릴리즈](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.2)에서 `YoloMacro-v1.4.2-win-x64.zip`을 받습니다.
-2. ZIP 전체를 풀고 `YoloMacro.exe`를 실행합니다.
-3. 활성화가 정상이면 **RPA 실행** 화면으로 시작합니다. 비활성·만료·서명/네트워크/응답 오류·최소 버전 미달일 때만 **설정**으로 이동합니다.
-4. 설정에서 수동으로 `다시 확인`해 성공한 경우에는 현재 탭을 유지합니다.
+## 자세한 사용자 설명서
 
-- [한국어 전체 사용자 설명서](docs/USER_MANUAL.ko.md)
-- [한국어 원격 활성화·업데이트 가이드](docs/REMOTE_ACTIVATION_AND_UPDATE.ko.md)
-- [한국어 v1.4.2 릴리즈 노트](docs/RELEASE_NOTES.v1.4.2.ko.md)
+처음 설치한 사용자부터 YOLO 모델 제작까지 이어지는 전체 한국어 설명서를 제공합니다.
 
-### v1.4.2 실행 흐름
+| 문서 | 내용 |
+|---|---|
+| [전체 사용자 설명서](docs/USER_MANUAL.md) | 설치, 화면 구성, 기능 선택과 전체 문서 지도 |
+| [English User Manual](docs/USER_MANUAL_EN.md) | Installation, activation, execution, camera, YOLO, AOI, labeling and troubleshooting |
+| [RPA 실행 완전 가이드](docs/RPA_EXECUTION_GUIDE.md) | 프로젝트, 대상 창, OpenCV/YOLO/AOI 액션, 입력, 분기, 관찰 실행 |
+| [일괄 설정·창 복구·Replay 관리](docs/BATCH_SETTINGS_AND_REPLAY_1.3.0.md) | 다중 선택 설정 복사, 사라진 창 복구, Replay 용량 제한 |
+| [고속 캡처·선택 값 일괄 변경](docs/PERFORMANCE_AND_BULK_EDIT_1.3.1.md) | 첫 프레임 공유, CPU 최적화, 체크한 필드만 일괄 변경 |
+| [CPU 회귀 수정과 실측](docs/CPU_OPTIMIZATION_1.3.2.md) | 미리보기 폭주 수정, ROI 적응형 변환, 실제 프로젝트 CPU 비교 |
+| [AOI 학습과 검사 가이드](docs/AOI_GUIDE.md) | 검사/정렬 ROI, OK·NG 샘플, 기준 계산, RPA 연결 |
+| [YOLO 라벨링·학습·연결 A-Z](docs/YOLO_LABELING_TRAINING_GUIDE.md) | 이미지 수집, 라벨링, 품질 검사, train/val, 학습, ONNX, 모델 로드 |
+| [YOLO·AOI 검사 설비 구성](docs/INSPECTION_SYSTEM_GUIDE.md) | 대상 창/카메라 입력, 라벨 검수, YOLO·AOI 복합 판정, 현장 확장 경계 |
+| [원격 활성화·보안 업데이트](docs/REMOTE_ACTIVATION_AND_UPDATE.md) | GitHub Pages On/Off, 서명, 캐시, DLL 업데이트와 복구 |
+| [Remote Activation &amp; Update (English)](docs/REMOTE_ACTIVATION_AND_UPDATE_EN.md) | Signed manifest, public distribution, updater and rollback operations |
+| [관리자 운영 확인 프롬프트](docs/ADMIN_OPERATION_PROMPT.md) | 키·토큰을 노출하지 않는 활성화 상태 점검용 프롬프트 |
+| [전체 기능 참고서](docs/FEATURE_REFERENCE.md) | 모든 메뉴, 탭, 액션, 설정과 저장 폴더 |
 
-- 상위 목록과 조건 폴더의 하위 동작을 화면 순서대로 실행합니다. 입력 뒤 새 화면을 캡처해 다음 항목을 계속하며 목록 끝에서만 처음으로 돌아갑니다.
-- `고속 반복 좌클릭`은 한 번 찾은 위치를 1~10,000회, 0~1,000ms 간격으로 클릭합니다.
-- 키 감지는 `1`, `{SPACE}`, `{ENTER}`, `^c`처럼 저장하며 비활성 창에는 실제 키다운·키업 메시지를 보냅니다.
-- 실행 표시 `▶`와 폴더 표시 `📁`는 이름에 저장되지 않습니다.
-- 프로그램의 `GitHub` 버튼은 이 공개 Distribution 저장소를 엽니다.
+![YoloMacro 실행 화면](artifacts/main-run-safety-default.png)
 
-## English
+![YOLO 라벨링 화면](artifacts/main-labeling-default.png)
 
-This is the public distribution repository for YoloMacro. Private source and historical internal material remain in `ko9ma7/YoloMacro`; this repository contains only verified release packages, the Core DLL, SBOM, signed activation manifest, and public documentation.
+![AOI 학습 화면](artifacts/ui-aoi-final-visible.png)
 
-### Download and start
+## 주요 기능
 
-1. Download `YoloMacro-v1.4.2-win-x64.zip` from the [v1.4.2 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.2).
-2. Extract the complete archive and run `YoloMacro.exe`.
-3. Valid activation opens **RPA Execution** at application startup. Only a final disabled, expired, signature/network/response error, or minimum-version failure opens **Settings**.
-4. A successful manual Retry keeps the current tab.
+- OpenCV 이미지 탐색 및 클릭
+- YOLO ONNX 모델 기반 객체 감지
+- AOI OK/NG 기준 검사와 ROI 게이지 퍼센트 판정
+- 현재 프로그램 화면에서 OK/NG 샘플과 YOLO 학습 이미지 캡처
+- 선택 이미지 기준 상대 좌표 클릭과 대상 창 기준 절대 좌표 클릭
+- 찾은 이미지 중심 기준 좌표 자동 계산
+- OpenCV 이미지 매칭 프리셋과 현재 화면 테스트
+- 액션별 OpenCV 전처리(밝기 정규화, 히스토그램 평활화, 노이즈 완화, 선명화, 이진화)
+- 검색 결과 JSONL 기록으로 ROI/점수/전처리/탐색 결과 추적
+- 카테고리/폴더식 로직 템플릿 추가
+- 폴더 조건 이미지 기반 하위 공정 실행/우회
+- 프로젝트별 이미지 격리, 가져오기, 참조 안전 삭제
+- 사용자가 만든 템플릿 저장 및 삭제
+- 여러 이미지 중 랜덤 클릭, 전체 클릭, 첫 번째/몇 번째 대상 클릭
+- n초 이상 지속 인식 조건
+- 이전 화면 비교 기반 앱 정지 감시
+- Gemini 기반 화면 상태 판단
+- 대상 프로세스 메모리 읽기 전용 모니터
+- GitHub Pages의 ECDSA 서명 manifest 기반 원격 활성화 On/Off
+- 객체 자동 선택, 이전 라벨 복사, YOLO 학습/검증 데이터 분리
+- 라벨 검수/negative 상태, 빈 라벨 내보내기, 동일 이미지 그룹 기반 train/val 누수 방지
+- 조절 가능한 YOLO NMS·최대 검출 수와 AOI 정상 분산 허용·F1 자동 보정
+- 클릭과 외부 전송 없이 흐름만 확인하는 관찰 실행
+- 실행 전 이미지·ROI·점프·순환 경로 검사와 프로젝트 권한표
+- 실시간 실행 노드 표시, 연속 클릭·무한 순환 안전 정지, 상태 변화 재생 기록
+- Ctrl/Shift 다중 선택 후 이미지 이름·ROI를 유지하는 설정 그룹 일괄 복사
+- 기준 액션 없이 선택한 필드만 여러 액션에 적용하는 설정 값 일괄 변경
+- 프로그램 창 자동 화면 복귀와 대상 투명화 실패·예외 복구
+- 실행별 Replay 세션, 실패 장면 전용 저장, 전체 용량·보관 기간 제한과 즉시 비우기
+- 낮은 신뢰도 화면 능동 학습 검토함과 라벨 데이터 품질 검사
+- YOLO 모델 SHA-256·입력 크기·클래스 목록 등록
+- Windows DPAPI API 키 보호와 서명·SHA-256 검증·별도 updater·자동 롤백
+- GitHub Actions 빌드/테스트, CodeQL, Gitleaks 비밀정보 검사, Dependabot, SBOM, 빌드 출처 증명
 
-- [English User Manual](docs/USER_MANUAL.en.md)
-- [English Remote Activation & Update Guide](docs/REMOTE_ACTIVATION_AND_UPDATE.en.md)
-- [English v1.4.2 Release Notes](docs/RELEASE_NOTES.v1.4.2.en.md)
+## 이번 릴리즈
 
-### v1.4.2 execution flow
+현재 개발 버전은 `1.4.2`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
 
-- Top-level items and matching folder children run in visible order. After input, the app captures the updated screen and continues with the next item; only the list end restarts at item zero.
-- **Rapid Click** reuses one detected position for 1 to 10,000 clicks with a 0 to 1,000 ms interval.
-- Key capture stores `1`, `{SPACE}`, `{ENTER}`, or `^c`, and inactive delivery sends real key-down/key-up messages.
-- Runtime `▶` and folder `📁` markers are never persisted in action names.
-- The in-app **GitHub** button opens this public Distribution repository.
+`1.4.2`의 핵심 수정:
 
-## Integrity and privacy
+- 폴더 안 동작이 성공한 뒤 나머지 하위 작업을 건너뛰지 않고, 새 화면을 캡처해 다음 항목을 순서대로 계속 검사합니다. 목록 끝에서만 처음으로 돌아갑니다.
+- 찾은 위치를 한 번의 판정으로 최대 10,000회 클릭하는 `고속 반복 좌클릭`과 0~1,000ms 클릭 간격을 추가했습니다.
+- 비활성 창 입력도 실제 `KEYDOWN → KEYUP` 메시지와 조합키·확장키를 전달하며, 키 감지에서 Space는 `{SPACE}`로 명확히 표시합니다. 표준 Windows 입력창에서 숫자가 중복되지 않는 것도 회귀 검사합니다.
+- 실행 표시용 `▶`와 폴더 표시 `📁`가 작업 이름에 저장되어 반복해서 늘어나던 문제를 수정하고 기존 프로젝트의 잔류 접두사도 불러올 때 정리합니다.
+- 프로그램의 `GitHub` 버튼은 공개 실행 파일·문서 저장소인 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)을 엽니다.
+- 실행 로그에 동작 전/후 대기, 새 화면 캡처 여부와 다음 검사 항목을 표시합니다.
 
-The client validates the ECDSA P-256 signed [`manifest.json`](manifest.json) and the published Core DLL SHA-256. Do not publish customer images, datasets, API keys, tokens, signing keys, or private source in this repository.
+`1.4.1`의 핵심 수정:
+
+- 유효한 활성화에서는 저장된 마지막 탭과 관계없이 항상 `RPA 실행` 화면으로 시작합니다.
+- 활성화 확인 중인 임시 상태에서는 화면을 강제로 바꾸지 않으며, 최종 비활성·만료·서명 오류·네트워크/응답 오류·최소 버전 미달 상태에서만 `설정` 화면으로 이동합니다.
+- 한국어·영문 README, 사용자 설명서와 공개 GitHub Pages 문서를 최종 실행 흐름에 맞게 동기화했습니다.
+
+`1.4.0`의 핵심 수정:
+
+- GitHub Pages의 서명된 manifest에서 `enabled=true`일 때만 매크로·YOLO·AOI·라벨링 핵심 기능을 활성화합니다.
+- 공개키만 프로그램에 내장하고 개인키는 GitHub Actions Secret으로 관리합니다. 404·위조·만료·잘못된 JSON은 모두 fail-closed입니다.
+- 네트워크 장애에만 적용되는 0~168시간 제한 캐시, 연결 제한시간과 재시도 횟수를 설정할 수 있습니다.
+- 서명된 SHA-256을 검증한 `YoloMacro.CoreLib.dll`만 별도 updater가 백업·원자 교체하며 실패 시 자동 복원합니다.
+- 대상 창/카메라 공통 검사 입력, 라벨 검수 상태와 데이터셋 품질 검사, YOLO NMS, AOI F1 보정 기능을 강화했습니다.
+- 전체 변경은 [`CHANGELOG.md`](CHANGELOG.md), 운영 절차는 [`docs/REMOTE_ACTIVATION_AND_UPDATE.md`](docs/REMOTE_ACTIVATION_AND_UPDATE.md)에 기록했습니다.
+
+`1.3.2`의 핵심 수정:
+
+- 검색 기록이 꺼져 있을 때 모든 액션에서 전체 미리보기를 생성하던 CPU 회귀를 수정하고 미리보기를 전역 최대 4FPS로 제한했습니다.
+- 빠른 검색 상태와 작업 강조는 100ms마다 최신 값 하나만 UI에 전달해 Dispatcher 요청 누적을 제거했습니다.
+- ROI 사용량이 작은 프로젝트는 전체 화면 Mat 변환 대신 필요한 ROI만 `LockBits`로 변환하고, ROI와 템플릿 크기가 같으면 위치 탐색 없이 직접 비교합니다.
+- 작은 ROI 검색에 OpenCV 32개 스레드가 사용되던 것을 실행 중 2개로 제한하고, OneDrive 템플릿 변경 확인은 최대 초당 한 번만 수행합니다.
+- Replay는 상태 변화도 항목별 10초, 전체 이미지 저장은 2초 간격을 적용해 깜빡이는 화면의 동기 JPEG 폭증을 차단했습니다.
+- 실제 `nowPANG-15` 관찰 실행 15초 비교에서 전체 CPU 평균이 기존 `1.73%`에서 수정본 `0.63%`로 감소했습니다. 자세한 원인과 측정 조건은 [`docs/CPU_OPTIMIZATION_1.3.2.md`](docs/CPU_OPTIMIZATION_1.3.2.md)에 있습니다.
+
+`1.3.1`의 핵심 수정:
+
+- `리스트 시작 화면 1회 캡처`는 목록 검색용 전체 화면을 한 번 캡처하고, 입력 전까지 모든 이미지 액션이 각자의 ROI로 같은 프레임을 검사합니다.
+- `액션 후 화면 갱신`을 켜면 입력 직후 오래된 프레임을 폐기하고 새 화면에서 다음 항목을 계속합니다. 끄면 같은 프레임으로 다음 항목을 검사합니다. 목록 처음으로 돌아가는 시점은 두 경우 모두 목록 끝입니다.
+- 전체 프레임과 템플릿을 OpenCV Mat으로 한 번만 변환하고 ROI는 복사 없는 Mat 뷰로 검사합니다. 발견 미리보기도 상태 변화 또는 250ms 주기로 제한합니다.
+- 기존 `복사`와 별도로 `변경`을 추가했습니다. 범주를 선택하면 관련 필드만 보이고, 각 필드의 `적용`을 체크한 값만 선택한 액션에 반영합니다.
+- Replay 반복 실패 저장 간격을 60초로 늘리고 전체 화면 대신 ROI 주변을 저장해 CPU·디스크·폴더 증가량을 줄였습니다.
+- 자세한 동작과 검증은 [`docs/PERFORMANCE_AND_BULK_EDIT_1.3.1.md`](docs/PERFORMANCE_AND_BULK_EDIT_1.3.1.md)에 정리했습니다.
+
+`1.3.0`의 핵심 수정:
+
+- Ctrl/Shift로 여러 액션을 선택하고 기준 액션을 우클릭하여 `다중 이미지 조건`, `이미지 매칭`, `대기·중복 방지·재시도`, `마우스 및 기타 액션`, `흐름`을 필요한 그룹만 복사할 수 있습니다.
+- 일괄 복사 중에도 각 액션의 기본 이미지 이름, 다중 이미지 파일 목록, ROI 검색 범위는 유지됩니다.
+- 프로그램 창 좌표를 모든 모니터 작업 영역 안으로 보정하고, 화면 구성 변경 시 자동 복귀하며 `도구 > 프로그램 창 위치 초기화`도 제공합니다.
+- 투명 처리한 대상 창은 다른 프로젝트·새 대상 선택·종료·처리되지 않은 예외 전에 원래 스타일과 불투명도로 복구합니다. 캡처·ROI 오버레이 중 오류가 발생해도 프로그램 창이 다시 표시됩니다.
+- Replay는 실행별 세션으로 분리하고 기본적으로 실패 장면만 저장합니다. 전체 용량과 보관 일수를 제한하며 이미지가 사라진 기존 JSONL 기록도 정리합니다.
+- 사용법과 화면은 [`docs/BATCH_SETTINGS_AND_REPLAY_1.3.0.md`](docs/BATCH_SETTINGS_AND_REPLAY_1.3.0.md)에 정리했습니다.
+
+`1.2.2`의 핵심 수정:
+
+- 실행 중인 항목은 작업 이름 앞의 `▶`로 계속 표시하지만 사용자가 선택한 행과 스크롤 위치는 움직이지 않습니다.
+- 예전처럼 현재 항목으로 화면을 이동하고 싶을 때만 작업 목록 위의 `따라가기`를 켤 수 있습니다. 기본값은 꺼짐입니다.
+- GitHub 기본 코드 브랜치도 릴리스와 같은 버전으로 갱신해 Code 화면과 Release 버전이 일치합니다.
+- 화면과 자세한 사용법은 [`docs/RUN_LIST_TRACKING_1.2.2.md`](docs/RUN_LIST_TRACKING_1.2.2.md)에 정리했습니다.
+
+`1.2.1`의 핵심 수정:
+
+- 관찰 실행이 실제 실행과 같은 액션 전·후 대기를 유지합니다. 마우스·키보드·웹훅·AI 전송·메모리 조작은 계속 차단합니다.
+- 빠른 순회 중 작업 목록 강조와 자동 스크롤을 100ms 단위로 묶어 UI와 CPU 부하를 낮췄습니다.
+- 관찰 모드의 켜짐 상태와 적용 범위를 상단 상태 문구와 도움말에서 명확히 보여줍니다.
+- 자세한 설명과 화면은 [`docs/OBSERVE_MODE_1.2.1.md`](docs/OBSERVE_MODE_1.2.1.md)에 정리했습니다.
+
+`1.2.0`의 핵심 수정:
+
+- `관찰 실행`에서는 화면 판정과 분기만 따라가고 마우스·키보드·웹훅·AI 전송·메모리 읽기·DLL 인젝션을 실행하지 않습니다.
+- 실행 전에 누락 이미지, 잘못된 ROI, 삭제된 점프 대상, 중복 ID와 순환 경로를 검사하고 필요한 권한을 한글로 표시합니다.
+- 실행 상태 머신과 안전 감시를 추가해 같은 노드의 과도한 반복과 분당 연속 동작을 자동 정지합니다.
+- 상태 변화와 장시간 실패 화면만 `Replay`에 제한적으로 저장하며, 임계값 근처 화면은 선택적으로 능동 학습 검토함에 수집합니다.
+- 데이터 품질 검사, 프로젝트 이미지 복구·중복 백업, YOLO 모델 레지스트리를 제공합니다.
+- Gemini API 키는 Windows DPAPI로 보호하고 URL이 아닌 인증 헤더로 전송합니다. 웹훅은 HTTPS만 허용하고 내용은 로그에 남기지 않습니다.
+- 업데이트 ZIP은 SHA-256을 반드시 검증하며 적용 전 파일 백업과 실패 시 복원을 수행합니다.
+- 공개 저장소용 GitHub Actions, CodeQL, Gitleaks, Dependabot, CycloneDX SBOM과 빌드 출처 증명 구성을 포함합니다.
+
+`1.1.0`의 핵심 수정:
+
+- 폴더에 조건 이미지를 지정할 수 있습니다. 이미지가 보일 때만 하위 공정을 실행하고, 없으면 폴더 전체를 건너뜁니다.
+- 새 프로젝트마다 독립 작업공간과 이미지 폴더를 만들며, 노드 삭제 시 더 이상 참조하지 않는 이미지도 함께 정리합니다.
+- 설정창은 기본 항목과 상세 항목을 나눴고 폴더에서는 불필요한 클릭·키 입력 설정을 숨깁니다.
+- `추천 완성형`에 폴더 조건 순차 공정, 3상태 화면 라우터, YOLO+AOI 복구를 추가하고 기존 보상/로딩/멈춤 복구 세트와 함께 먼저 보여줍니다.
+- 라벨링은 객체 자동 선택, 색상 영역 선택, 이전 이미지 라벨 복사를 제공하며 YOLO 데이터셋을 학습/검증 폴더로 분리해 내보냅니다.
+- 투명 대상 창 복원 시 클릭 통과 속성과 투명도를 강제로 제거해 수동 조작 불가 상태가 남지 않도록 했습니다.
+
+`1.0.13`의 핵심 수정:
+
+- 작업 목록 제목 옆에 빠른 추가 버튼을 추가했습니다. 폴더, 액션, 로직 템플릿을 우클릭 없이 바로 추가할 수 있습니다.
+- 실행 화면의 작업목록/미리보기/로그 영역이 창 크기 변화에 맞게 과도하게 밀리지 않도록 반응형 제한값을 정리했습니다.
+- 설정 화면에 GitHub Releases 기반 업데이트 확인 UI를 추가했습니다. `update-manifest.json`을 읽어 채널과 버전을 비교합니다.
+- 보상 선택, 로딩 안정 대기, 클릭 씹힘/호버 복구, 팝업 우선 처리처럼 실제 반복 공정에 바로 넣을 수 있는 완성형 템플릿을 추가했습니다.
+- 템플릿 추가 창에서 분류와 함께 추가될 폴더/액션 미리보기를 보여줍니다.
+- 핵심 `YoloMacro.Core` 코드가 `YoloMacro.CoreLib.dll`로 분리되도록 프로젝트 구조를 정리했습니다. DLL 분리는 소스 구조와 배포 경계를 나누는 조치이며, C# 디컴파일을 완전히 막지는 못하므로 배포 시 난독화 도구를 함께 쓰는 것을 권장합니다.
+- 현재 안정 설정과 배포/업데이트 절차를 `docs/` 문서와 `distribution/update-manifest.json`으로 정리했습니다.
+
+`1.0.12`의 핵심 수정:
+
+- 일부 게임/앱플레이어가 비활성 `PostMessage` 클릭을 무시하는 문제에 대응하기 위해 액션별 `실제 커서 클릭 강제` 옵션을 추가했습니다.
+- 인터셉션 옵션이 켜져 있지만 드라이버가 준비되지 않은 경우 좌표계가 꼬이지 않도록 실제 커서 입력으로 안전하게 대체합니다.
+- 실행 로그에 입력 경로(`PostMessage`, `실제커서`, `Interception`)와 성공 후 다음 검색 항목/다음 캡처 사이클 이동을 표시합니다.
+- OpenCV 프리셋에 `빠른 이진화 매칭 (글자/아이콘)`을 추가했습니다.
+- 대상 메뉴에 `대상 창 다음 모니터로 이동`, `대상 창 주 모니터로 이동`, `대상 창 화면 밖으로 이동`을 추가했습니다.
+
+`1.0.11`의 핵심 수정:
+
+- v1.0.10에서 작은 템플릿을 과하게 차단해 기존 프로젝트의 버튼/닫기/재연결 이미지가 실행되지 않던 문제를 수정했습니다.
+- 템플릿 식별력이 낮아도 검색과 클릭은 기존처럼 계속 진행합니다. 대신 로그와 테스트 결과에 오클릭 위험 주의를 표시합니다.
+- 상대좌표 `화면에서 찍기`도 기준 이미지가 작다는 이유만으로 중단하지 않도록 되돌렸습니다.
+- `정확 매칭` 설명을 현재 동작에 맞게 정리했습니다.
+
+`1.0.10`의 핵심 수정:
+
+- OpenCV `정확 매칭`에 템플릿 식별력 검사를 추가했습니다. 초록 선택 표시, 노란 배경 일부, 얇은 선처럼 너무 작거나 단색에 가까운 조각은 다른 위치에서도 100%가 나올 수 있으므로 차단합니다.
+- 기존 데이터가 고장 난 것이 아니라 기준 이미지가 대상 전체 특징을 담지 못한 경우를 로그와 테스트 결과에서 구분해 보여줍니다.
+- 설정창 `테스트` 버튼은 템플릿 크기, 색상 수, 주색상 비율, 상세 비율을 보여주며 다시 캡처해야 하는 이유를 안내합니다.
+- 상대좌표 기준 이미지가 너무 단순한 경우 `화면에서 찍기`에서 별도 메시지로 알려줍니다.
+- 메인 창과 액션 설정창 기본 크기를 줄이고, 설정창의 일부 긴 문구와 구조 아이콘을 정리해 대상 화면을 덜 가리도록 했습니다.
+
+`1.0.9`의 핵심 수정:
+
+- OpenCV `정확 매칭`을 색상/배경/픽셀 근접도까지 다시 검증하도록 강화했습니다. 1차 점수가 높아도 노란 배경과 갈색 배경처럼 실제 픽셀이 다르면 통과하지 않습니다.
+- 새 OpenCV 액션과 기본 템플릿은 `정확 매칭 + 92%` 기준으로 시작합니다. 밝기 변화나 형태 위주 검색은 `색상 무시`, `마젠타 배경 무시`, `모양만 비교`, 전처리 프리셋을 명시적으로 선택해 사용합니다.
+- 탐색 실패 로그와 설정창 테스트 결과에서 `1차 점수는 높지만 색상/픽셀 검증 실패`를 구분해 표시합니다.
+- 노드 설정창 탭 이름과 매칭 프리셋 문구를 줄여 작은 화면에서도 덜 잘리도록 정리했습니다.
+- MaterialDesignInXAML Toolkit의 `MaterialDesignThemes` 기본 리소스를 적용해 WPF 기본 컨트롤 스타일 기반을 정리했습니다.
+
+`1.0.8`의 핵심 수정:
+
+- 프로그램 폴더의 `참고자료`에 들어온 여러 매크로 소스 패턴을 분석해 YoloMacro 방식으로 반영했습니다.
+- OpenCV 액션에 전처리 모드를 추가했습니다. 밝기 정규화, 히스토그램 평활화, 노이즈 완화, 선명화, 자동 이진화, 적응형 이진화를 액션별로 선택할 수 있습니다.
+- 환경 설정에 `검색 기록 저장` 옵션을 추가했습니다. 켜면 `Logs/vision-search-YYYYMMDD.jsonl`에 ROI, 엔진, 이미지명, 점수, 전처리, 성공 여부가 저장됩니다.
+- 커스텀 스크립트에 `랜덤대기`, `변수`, `랜덤문자`, `로그` 명령을 추가했습니다.
+- 밝기 보정 이미지 검색, 글자/아이콘 이진화 검색, 랜덤 시간 대기, 랜덤 문자열 입력, 수동 이동 루트 목록 템플릿을 추가했습니다.
+
+`1.0.7`의 핵심 수정:
+
+- v1.0.6에서 OpenCV 후보 검증이 과하게 적용되어 기존 프로젝트의 작은 ROI와 `색상 무시` 템플릿이 액션까지 진행되지 못하던 문제를 수정했습니다.
+- 저장된 항목의 정확도 값을 다시 기준으로 사용합니다. 예: `정확도 85% + 색상 무시` 설정이 내부에서 96% 이상으로 강제되지 않습니다.
+- 후보 검증은 화면 밖 좌표와 명백히 다른 픽셀 후보만 거르도록 완화했습니다.
+- 매칭이 성공하면 기존처럼 클릭, 드래그, 키 입력 등 액션 단계로 진행됩니다.
+
+`1.0.6`의 핵심 수정:
+
+- OpenCV 템플릿 매칭에서 다른 이미지가 높은 점수로 통과하던 문제를 줄였습니다.
+- 후보 위치를 실제로 다시 잘라 픽셀 유사도와 엣지 겹침을 재검증합니다.
+- 작은 템플릿, 낮은 높이 ROI, `색상 무시` 옵션 사용 시 더 엄격한 내부 기준을 적용합니다.
+- 성공 로그에는 실제 통과한 후보의 점수만 표시합니다.
+
+`1.0.5`의 핵심 수정:
+
+- 빠른 스캔 모드에서 리스트 시작 시 한 번 캡처하고 ROI 항목들을 지연 없이 검사하도록 루프를 정리했습니다.
+- 실패한 ROI 항목마다 `동작 후 대기`가 적용되어 느려지던 문제를 수정했습니다.
+- `검색 사이클 대기(ms)`와 각 액션의 `동작 후 대기(ms)`를 분리했습니다.
+- 액션 성공 후 오래된 캡처로 남은 항목을 계속 검사하지 않고 다음 캡처 사이클로 복귀하는 옵션을 추가했습니다.
+- 템플릿 이미지 캐시와 불필요한 Bitmap 복제 제거로 반복 매칭 속도를 개선했습니다.
+- 환경 설정 화면을 스크롤 가능하게 수정했습니다.
+
+`1.0.4`의 핵심 수정:
+
+- OpenCV 이미지 매칭 옵션을 프리셋 방식으로 정리했습니다.
+- 프리셋은 다시 눌러 해제되는 체크박스가 아니라 항상 하나의 방식이 선택되는 구조입니다.
+- 현재 타겟 화면 기준 `테스트` 버튼을 추가해 점수, 기준값, 후보 좌표, 실패 원인을 바로 확인할 수 있습니다.
+- OpenCV가 아닌 YOLO/AOI/Gauge/FrameStability에서는 OpenCV 전용 옵션이 비활성화됩니다.
+- 메모리 프로필 예제 생성 시 `MemoryProfile.guide.md`를 같이 만들고, 프로필/스냅샷을 바로 여는 버튼을 추가했습니다.
+
+`1.0.3`의 핵심 수정:
+
+- `저장`과 `다른 이름으로 저장` 동작을 분리했습니다.
+- 자동저장은 원본 프로젝트 파일을 덮어쓰지 않고 `AutoSave/session-{instanceId}.json`에 복구용으로만 저장합니다.
+- 자동저장 중 미사용 이미지를 삭제하지 않도록 수정했습니다.
+- 프로젝트 저장 시 기존 파일은 `Backups` 폴더에 자동 백업하고, 임시 파일 저장 후 교체하는 원자 저장 방식을 적용했습니다.
+- 프로젝트 폴더에 `.ymacro.lock`을 두어 여러 YoloMacro 인스턴스가 같은 프로젝트를 동시에 열 때 읽기 전용/복사본 열기를 선택할 수 있게 했습니다.
+- F5/F6 전역 단축키 등록 실패를 로그로 표시합니다.
+
+`1.0.2`의 핵심 수정:
+
+- 시작 후 정지 버튼을 누를 때 `MemoryMonitor.StopAsync()`에서 발생하던 `NullReferenceException` 수정
+- 중복 정지, 빠른 시작/정지, 엔진 종료 콜백이 겹쳐도 메모리 모니터 자원이 한 번만 정리되도록 직렬화
+- 메모리 프로필의 `Watches` 항목이 비어 있거나 누락되어도 크래시하지 않도록 방어
+- GitHub에 보이는 README와 배포 문서를 한국어 UTF-8로 재정리
+
+자세한 변경 내용은 [RELEASE_NOTES.md](RELEASE_NOTES.md)를 확인하세요.
+
+## 기본 사용 흐름
+
+1. `대상 진단` 또는 `타겟 설정`으로 실행할 대상 창을 지정합니다.
+2. 이미지 리스트에 직접 액션을 추가하거나 `템플릿 추가`에서 로직 세트를 추가합니다.
+3. 각 노드에서 탐색 엔진, 이미지, ROI, 클릭 좌표, 키 입력, 대기 조건을 수정합니다.
+4. 필요하면 `AOI 검사/학습`에서 OK/NG 샘플을 현재 화면 기준으로 캡처합니다.
+5. 실행 모드에서 `시작`과 `정지`로 매크로를 구동합니다.
+6. 작은 실행 화면이 필요하면 `실행 화면` 모드로 전환해 대상 화면, 시작/정지, 로그 위주로 사용합니다.
+
+## 프로젝트 저장 규칙
+
+프로젝트는 전용 폴더 단위로 관리됩니다.
+
+```text
+ProjectFolder/
+  project.ymacro.json
+  AutoSave/
+    session-{instanceId}.json
+    latest.json
+  Images/
+    original/
+    edited/
+    cache/
+  AOI/
+  Logs/
+  Backups/
+  .ymacro.lock
+```
+
+저장 동작:
+
+- `저장`: 현재 열려 있는 `project.ymacro.json`을 저장합니다. 기존 파일은 `Backups`에 먼저 백업됩니다.
+- `다른 이름으로 저장`: 새 프로젝트 전용 폴더를 만들고 `project.ymacro.json`으로 저장합니다. 기존 `Images`, `AOI`, `Templates` 자료는 새 폴더로 복사합니다.
+- `자동저장`: 복구용 세션 파일만 저장합니다. 원본 프로젝트 파일을 덮어쓰지 않습니다.
+- `미사용 이미지 정리`: 사용자가 도구 메뉴에서 직접 실행할 때만 삭제 후보를 보여주고 삭제합니다.
+- 여러 인스턴스에서 같은 프로젝트를 열면 lock 파일을 확인해 읽기 전용 또는 복사본 열기를 선택합니다.
+
+자세한 저장/열기 정책은 [docs/project-storage.md](docs/project-storage.md)를 확인하세요.
+
+## 로직 템플릿
+
+템플릿은 단일 설정값이 아니라 여러 노드가 묶인 동작 세트입니다. 추가한 뒤 이미지, ROI, 좌표, 정확도, 반복 횟수만 바꿔서 원하는 자동화 흐름으로 수정할 수 있습니다.
+
+기본 제공 예:
+
+- 이미지 찾고 클릭
+- 실시간 ROI 이미지 검색
+- ROI 반응 대기 후 클릭
+- 특정 ROI의 로테이션 이미지 선택
+- 여러 후보 이미지 중 하나 랜덤 클릭
+- 한번에 여러 이미지 클릭
+- 지정 이미지 n초 이상 인식 시 행동
+- 지정 이미지 발견 횟수 카운트
+- ROI 게이지가 기준 이하일 때 회복/회피 행동
+- HP 부족 시 귀환 행동 세트
+- 앱 동작 정지 화면 감시
+- 게이지 부족 회복 행동 세트
+- AOI OK이면 다음 단계
+- AOI 불량 발견 후 정지
+- AOI 불량 발견 후 복구 행동 세트
+- A 이미지 위치 기준으로 B 이미지 인식
+- 이미지 클릭 후 반응이 없으면 재클릭
+- 이미지 찾을 때까지 드래그하되 횟수 제한
+- 연속 이미지 검색 후 클릭
+- 현재 위치/상태 판독 후 다음 동작 분기
+- YOLO 클래스 감지 후 클릭
+- YOLO로 위치를 찾고 AOI로 불량 확인
+- 앱플레이어 HWND 대상 확인
+- ROI 변경 후 이미지 검색
+
+사용자가 만든 노드와 하위 노드는 템플릿으로 저장할 수 있고, 템플릿 창에서 다시 불러오거나 삭제할 수 있습니다.
+
+## AOI 검사/학습
+
+AOI는 별도의 검사 설비 전용 기능이 아니라 이미지 리스트 안에서 다른 매크로 동작과 섞어 쓰는 검사 조건입니다.
+
+권장 흐름:
+
+1. 현재 프로그램에서 카메라 또는 현미경 화면이 보이는 영역을 대상으로 지정합니다.
+2. 정상 시료를 같은 ROI에서 캡처해 OK 기준으로 저장합니다.
+3. 불량 시료가 보이면 같은 ROI에서 NG 샘플로 저장합니다.
+4. OK 기준 대비 차이 퍼센트, 최소 불량 면적, 정렬 옵션을 조정합니다.
+5. AOI 노드를 OpenCV, YOLO, 클릭, 키 입력 노드와 함께 리스트에 배치합니다.
+
+AOI는 OK 기준과 현재 ROI를 비교하고, 필요하면 위치 정렬을 적용해 같은 기준에서 차이를 판정합니다.
+
+## 좌표 방식
+
+액션 설정의 좌표 기준은 두 가지입니다.
+
+- `대상 창 좌상단(절대 좌표)`: 대상 창의 클라이언트 영역 좌상단을 `(0, 0)`으로 보고 클릭합니다.
+- `찾은 이미지 중심(상대 좌표)`: 선택한 이미지가 화면에서 발견된 중심점을 기준으로 클릭 오프셋을 저장합니다.
+
+`화면에서 찍기`를 사용하면 현재 화면에서 클릭한 지점이 대상 창 내부인지 확인하고, 상대 좌표는 이미지 중심과 클릭 지점의 차이를 자동 계산합니다.
+
+## 이미지 매칭 설정
+
+OpenCV 액션은 설정창에서 프리셋으로 매칭 방식을 고를 수 있습니다.
+
+- `정확히 같은 이미지 찾기`: 색상과 배경까지 같은 이미지를 찾습니다.
+- `색상 무시하고 찾기`: 눌린 버튼, 밝기 변화, 색상 차이에 유리합니다.
+- `마젠타 배경 무시`: 투명화 편집으로 만든 배경 영역을 제외합니다.
+- `모양만 비교`: 외곽선 형태 중심으로 비교합니다.
+- `크기/회전 변화 허용`: 느릴 수 있으므로 ROI를 좁게 잡는 것이 좋습니다.
+
+설정창의 `테스트` 버튼을 누르면 현재 타겟 화면에서 바로 점수, 기준값, 후보 좌표, 실패 원인을 확인할 수 있습니다.
+
+## 메모리 모니터
+
+메모리 기능은 읽기 전용입니다. 대상 프로세스 값을 `ReadProcessMemory`로 읽고 런타임 토큰으로 제공합니다.
+
+예:
+
+```text
+{memory.player.hp}
+{memory.player.hp.address}
+```
+
+설정 방법은 [docs/memory-monitor.md](docs/memory-monitor.md)를 확인하세요.
+
+메모리 프로필의 `예제 생성`을 누르면 `MemoryProfile.json`과 `MemoryProfile.guide.md`가 함께 생성됩니다. 프로필을 수정한 뒤 매크로를 실행하고 `스냅샷 열기`로 `Memory/MemorySnapshot.json`을 확인하면 읽힌 값과 오류를 바로 볼 수 있습니다.
+
+## YOLO 모델
+
+기본 모델 경로는 `yolo26n.onnx`입니다. Ultralytics YOLO26 모델을 ONNX로 내보낸 뒤 사용할 수 있습니다.
+
+이 앱은 ONNX Runtime 기반 로더를 사용하므로, 실제 적용 전 상단 메뉴의 `YOLO 모델`에서 모델이 정상 로드되는지 먼저 확인해야 합니다.
+
+## GitHub Pages 원격 활성화와 업데이트
+
+프로그램은 저장소 공개 여부를 라이선스로 사용하지 않습니다. `https://ko9ma7.github.io/YoloMacro-Distribution/manifest.json`의 ECDSA P-256 서명, `enabled`, 만료 시각과 최소 버전을 모두 검증합니다. 검증 실패 시 핵심 기능은 비활성화되며 설정 화면에서 원인을 확인하고 재검사할 수 있습니다.
+
+업데이트 manifest는 임의 코드나 경로를 전달할 수 없습니다. 프로그램 설치 폴더의 `YoloMacro.CoreLib.dll`만 허용하며 다운로드 SHA-256을 검증한 후 별도 updater에서 백업·원자 교체·롤백합니다.
+
+관리자 On/Off, manifest 재서명, GitHub Actions Secret, 캐시 정책과 복구 방법은 [원격 활성화와 보안 업데이트 운영 가이드](docs/REMOTE_ACTIVATION_AND_UPDATE.md)를 확인하세요. 소스는 MIT License이지만 원격 활성화는 배포된 설비의 운용 제어 기능입니다.
+
+## 빌드
+
+필수 환경:
+
+- Windows
+- .NET 8 SDK
+- Visual Studio 2022 또는 `dotnet` CLI
+
+Visual Studio에서 열 때는 루트의 `YoloMacro.sln`을 여세요. `YoloMacro.slnx`도 유지하지만, Visual Studio 버전에 따라 `.slnx`가 열리지 않을 수 있어 기존 호환 형식인 `.sln`을 기본 작업 파일로 제공합니다.
+
+빌드:
+
+```powershell
+dotnet build YoloMacro.sln
+```
+
+릴리즈 publish:
+
+```powershell
+dotnet publish YoloMacro\YoloMacro.csproj -c Release -o publish\YoloMacro
+```
+
+## 기술 스택
+
+- C# / WPF / .NET 8
+- OpenCvSharp4
+- Microsoft.ML.OnnxRuntime
+- Newtonsoft.Json
+- EasyHook
+- Win32 API
+
+## 주의사항
+
+- 고객 이미지, 현장 이미지, 학습 데이터는 공개 저장소에 올리지 마세요.
+- Gemini API Key, GitHub token, 기타 비밀 값은 코드에 커밋하지 마세요.
+- 메모리 모니터는 읽기 전용으로만 사용하세요.
+- YOLO 모델과 배포 바이너리는 배포 정책에 맞게 별도 관리하세요.

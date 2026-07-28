@@ -1,4 +1,4 @@
-# YoloMacro 1.4.2 User Manual
+# YoloMacro 1.4.3 User Manual
 
 [한국어 설명서](USER_MANUAL.md) · [English Manual](USER_MANUAL_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
@@ -6,7 +6,7 @@ This manual covers the normal path from installation to production-safe RPA exec
 
 ## 1. Install and verify
 
-1. Download `YoloMacro-v1.4.2-win-x64.zip` from the [public v1.4.2 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.2).
+1. Download `YoloMacro-v1.4.3-win-x64.zip` from the [public v1.4.3 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.3).
 2. Extract the complete ZIP. Do not run the executable from inside the archive.
 3. Install the .NET 8 Desktop Runtime if Windows requests it.
 4. Run `YoloMacro.exe`.
@@ -47,11 +47,15 @@ Project images, labels, AOI samples, replay evidence, and settings are isolated 
 | Stable icon, button or text shape | OpenCV template matching |
 | Object moves, scales or has background variation | YOLO |
 | Product/screen must match a normal reference | AOI |
+| Text, number, date or status message | OCR |
+| One of several example-driven visual states | Visual Dictionary |
 | Filled percentage or bar level | Gauge |
 | Screen must remain unchanged for a period | Frame Stability |
 | Visual rule is difficult to express deterministically | Gemini-assisted judgment |
 
 Use the smallest practical ROI. It improves speed and reduces false positives.
+
+See the [OCR and Visual Dictionary Guide](OCR_AND_VISUAL_DICTIONARY_GUIDE_EN.md) for profiles, regex/runtime variables, sample capture and production tuning. A v1.4.3 installation must be extracted as a complete ZIP because OCR requires the included managed/native Tesseract files and language data.
 
 ## 6. Safe execution workflow
 

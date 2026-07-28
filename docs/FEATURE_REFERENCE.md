@@ -86,7 +86,7 @@ RPA 실행, AOI, 라벨링, 설정 탭으로 이동합니다.
 
 - 현재 대상 프레임
 - ROI 점선
-- OpenCV/YOLO/AOI 탐지 박스
+- OpenCV/YOLO/AOI/OCR/대표 이미지 사전 탐지 박스
 - 발견 점수, 입력 경로, 분기, 딜레이와 오류 로그
 - 로그 접기/펼치기와 패널 크기 저장
 
@@ -96,7 +96,9 @@ RPA 실행, AOI, 라벨링, 설정 탭으로 이동합니다.
 
 ### 기본/동작 탭
 
-- OpenCV, YOLO, AOI, Gauge, Frame Stability 엔진
+- OpenCV, YOLO, AOI, OCR, 대표 이미지 사전, Gauge, Frame Stability 엔진
+- OCR 한국어·영문·숫자 프로필, 포함/일치/정규식/숫자 임계값, ROI 즉시 테스트
+- 대표 이미지 사전 라벨 샘플 캡처, 특정/전체 라벨 판정, 색상/회색/윤곽·다중 크기 비교
 - 여러 기준 이미지의 Single/OR/AND 조건
 - 유사도와 찾기 개수
 - 정확/색상 무시/외곽선/크기 회전/이진화 프리셋
@@ -236,6 +238,8 @@ RPA 실행, AOI, 라벨링, 설정 탭으로 이동합니다.
 | OpenCV | 아니오 | 제한적 | 제한적 | 빠름 |
 | YOLO | 예 | 강함 | 데이터에 따라 | 중간 |
 | AOI | OK/NG 샘플 | 작은 정렬 보정 | 강함 | 중간 |
+| OCR | 언어 데이터 | 글꼴·배율 설정에 따라 | 텍스트 대비에 따라 | 중간 |
+| 대표 이미지 사전 | 라벨별 ROI 샘플 | 다중 크기 허용 | 샘플 다양성에 따라 | 중간 |
 | Gauge | 아니오 | ROI 고정 | 비율 전용 | 빠름 |
 | AI | 프롬프트 | 강함 | 의미 판정 | 네트워크 의존 |
 
@@ -251,6 +255,8 @@ RPA 실행, AOI, 라벨링, 설정 탭으로 이동합니다.
 - `ActiveLearning/검토대기`: 경계 사례
 - `VisionHistory`: 검색 기록
 - `AoiInspection`: AOI 프로필과 OK/NG 샘플
+- `OcrData`: OCR 언어·전처리·PSM 프로필과 프로젝트별 추가 언어 데이터
+- `VisualDictionaries`: 사전 키/라벨별 대표 ROI 이미지
 - `DatasetReports`: 라벨 데이터 품질 보고서
 - YOLO 모델 레지스트리
 

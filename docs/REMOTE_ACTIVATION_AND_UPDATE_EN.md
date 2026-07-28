@@ -2,7 +2,7 @@
 
 [한국어 운영 가이드](REMOTE_ACTIVATION_AND_UPDATE.md) · [English](REMOTE_ACTIVATION_AND_UPDATE_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-> v1.4.3 packaging note: OCR requires managed/native runtime files and language data. The existing CoreLib-only updater cannot install those dependencies, so v1.4.3 must be installed from the complete ZIP in a new folder. Keep the remote manifest's single-DLL update fields on the last compatible version until a signed multi-file updater is available.
+> v1.4.4 packaging note: OCR requires managed/native runtime files and language data. The existing CoreLib-only updater cannot install those dependencies, so v1.4.4 must be installed from the complete ZIP in a new folder. The UI now distinguishes the installed application version from this legacy automatic-DLL policy version.
 
 ## Purpose
 

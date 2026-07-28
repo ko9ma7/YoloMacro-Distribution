@@ -1,6 +1,6 @@
 # OCR and Visual Dictionary Guide
 
-YoloMacro 1.4.3 adds two recognition modes to the existing OpenCV, YOLO, AOI and gauge pipeline: `OCR` reads text and numbers, while `Visual Dictionary` classifies a screen state from labeled example images. Both modes use the selected target-window or camera frame, ROI, found/not-found flow, input actions, Replay and active-learning review.
+YoloMacro 1.4.4 provides general Tesseract OCR, target-specific labeled glyph OCR, and a Visual Dictionary for example-driven screen states. All modes use the selected target-window or camera frame, ROI, found/not-found flow, input actions, Replay and active-learning review.
 
 ## Choose the recognition mode
 
@@ -22,11 +22,28 @@ YoloMacro 1.4.3 adds two recognition modes to the existing OpenCV, YOLO, AOI and
 6. Use `Test current ROI` to inspect recognized text, number and mean confidence.
 7. Validate the branch in Observe mode before enabling live input.
 
-![OCR action settings](../artifacts/action-settings-ocr-v1.4.3.png)
+![OCR action settings](../artifacts/action-settings-ocr-v1.4.4.png)
 
 Results are exposed as `{last.text}`, `{last.number}` and `{last.confidence}`. If the result key is `score`, the same values are available as `{score.text}`, `{score.number}` and `{score.confidence}`. Named regex groups such as `^(?<value>\d+)$` become `{score.value}`.
 
 For better accuracy, tighten the ROI first, restrict the character whitelist for numeric fields, compare Otsu and adaptive thresholding, scale small text by 2–4x, test inversion for dark backgrounds, and select the correct page-segmentation mode.
+
+## Train target-specific glyph samples
+
+1. Crop the ROI to one glyph in the actual target program and display scale.
+2. Select Custom Glyph Samples or Hybrid as the recognition source.
+3. Enter the label, such as `0`, `9`, `A`, or a Hangul syllable.
+4. Capture the current ROI or import multiple images for that label.
+5. Repeat across the expected brightness, antialiasing and animation variation.
+6. Test a multi-glyph ROI and inspect the assembled text, number, confidence and selected source.
+
+Samples are stored under `OcrData/<profile>/GlyphSamples/<label>/`. Exact text, contains, regex and numeric threshold decisions work identically for general and custom OCR. Hybrid mode compares Tesseract when custom confidence is below the profile threshold.
+
+## Follow a moving image
+
+Select `Mouse action → Target Follow` after configuring the initial OpenCV or YOLO detection. The tracker searches locally using grayscale and edge structure, updates its template from successful frames, and moves the pointer to the new center. Configure the frame interval, maximum duration (`0` means unlimited), allowed lost frames and search radius. For an abrupt full appearance change, use YOLO with representative training examples or start a new detection/tracking action.
+
+![Target follow settings](../artifacts/action-settings-target-follow-v1.4.4.png)
 
 ## Build a visual dictionary
 
@@ -48,4 +65,4 @@ Samples are stored under `VisualDictionaries/<dictionary>/<label>/` inside the p
 - Combine cooldown and require-disappear-before-repeat for repeated states.
 - Review low-confidence and incorrect frames through Replay or the active-learning inbox.
 - Keep customer captures and sample libraries in the private source or site workspace, never in the public distribution repository.
-- A 1.4.3 installation must keep `Tesseract.dll`, the `x64/x86` native runtime files and `tessdata` beside the application; extract the complete release ZIP.
+- A 1.4.4 installation must keep `Tesseract.dll`, the `x64/x86` native runtime files and `tessdata` beside the application; extract the complete release ZIP.

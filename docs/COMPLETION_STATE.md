@@ -4,7 +4,7 @@ Last updated: 2026-07-28
 
 ## Stable Project Baseline
 
-- Current app version: `1.4.4`
+- Current app version: `1.4.5`
 - Current stable project save: `nowPANG-15`
 - Last known safe start-button policy:
   - only one enabled start/continue image variant

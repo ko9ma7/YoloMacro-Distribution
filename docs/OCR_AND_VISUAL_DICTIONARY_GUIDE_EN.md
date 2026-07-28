@@ -1,6 +1,6 @@
 # OCR and Visual Dictionary Guide
 
-YoloMacro 1.4.4 provides general Tesseract OCR, target-specific labeled glyph OCR, and a Visual Dictionary for example-driven screen states. All modes use the selected target-window or camera frame, ROI, found/not-found flow, input actions, Replay and active-learning review.
+YoloMacro 1.4.5 provides general Tesseract OCR, target-specific labeled glyph OCR, and a Visual Dictionary for example-driven screen states. All modes use the selected target-window or camera frame, ROI, found/not-found flow, input actions, Replay and active-learning review.
 
 ## Choose the recognition mode
 
@@ -41,9 +41,11 @@ Samples are stored under `OcrData/<profile>/GlyphSamples/<label>/`. Exact text, 
 
 ## Follow a moving image
 
-Select `Mouse action → Target Follow` after configuring the initial OpenCV or YOLO detection. The tracker searches locally using grayscale and edge structure, updates its template from successful frames, and moves the pointer to the new center. Configure the frame interval, maximum duration (`0` means unlimited), allowed lost frames and search radius. For an abrupt full appearance change, use YOLO with representative training examples or start a new detection/tracking action.
+Choose the one-time click or no-click behavior in `Mouse action`, then enable `Keep following the same acquired target`. Visual Identity uses optical flow and anchored appearance samples for continuous movement, rotation and fading. Hybrid adds periodic same-class YOLO reacquisition. A fully invisible target cannot be observed by any vision model, so only a bounded velocity prediction is used before the lost-frame limit ends tracking.
 
-![Target follow settings](../artifacts/action-settings-target-follow-v1.4.4.png)
+See the [Target Identity Tracking Guide](TARGET_IDENTITY_TRACKING_GUIDE_EN.md) for configuration, YOLO dataset guidance and physical limits.
+
+![Target follow settings](../artifacts/action-settings-target-follow-v1.4.5.png)
 
 ## Build a visual dictionary
 
@@ -65,4 +67,4 @@ Samples are stored under `VisualDictionaries/<dictionary>/<label>/` inside the p
 - Combine cooldown and require-disappear-before-repeat for repeated states.
 - Review low-confidence and incorrect frames through Replay or the active-learning inbox.
 - Keep customer captures and sample libraries in the private source or site workspace, never in the public distribution repository.
-- A 1.4.4 installation must keep `Tesseract.dll`, the `x64/x86` native runtime files and `tessdata` beside the application; extract the complete release ZIP.
+- A 1.4.5 installation must keep `Tesseract.dll`, the `x64/x86` native runtime files and `tessdata` beside the application; extract the complete release ZIP.

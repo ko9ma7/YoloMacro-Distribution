@@ -2,7 +2,7 @@
 
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-현재 정식 버전은 `1.4.4`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
+현재 정식 버전은 `1.4.5`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
 YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.
 
@@ -21,6 +21,8 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 | [고속 캡처·선택 값 일괄 변경](docs/PERFORMANCE_AND_BULK_EDIT_1.3.1.md) | 첫 프레임 공유, CPU 최적화, 체크한 필드만 일괄 변경 |
 | [CPU 회귀 수정과 실측](docs/CPU_OPTIMIZATION_1.3.2.md) | 미리보기 폭주 수정, ROI 적응형 변환, 실제 프로젝트 CPU 비교 |
 | [OCR·대표 이미지 사전](docs/OCR_AND_VISUAL_DICTIONARY_GUIDE.md) | 화면 글자·숫자 판정, 정규식 변수, 라벨별 대표 이미지 상태 분류 |
+| [동일 대상 추적 가이드](docs/TARGET_IDENTITY_TRACKING_GUIDE.md) | 클릭과 추적 분리, 회전·투명화 추적, YOLO 하이브리드 재탐지 |
+| [참고 저장소 기능 분석](docs/REFERENCE_FEATURE_ANALYSIS_1.4.5.md) | 11개 매크로/비전 저장소의 채택·보류·제외 판단 |
 | [AOI 학습과 검사 가이드](docs/AOI_GUIDE.md) | 검사/정렬 ROI, OK·NG 샘플, 기준 계산, RPA 연결 |
 | [YOLO 라벨링·학습·연결 A-Z](docs/YOLO_LABELING_TRAINING_GUIDE.md) | 이미지 수집, 라벨링, 품질 검사, train/val, 학습, ONNX, 모델 로드 |
 | [YOLO·AOI 검사 설비 구성](docs/INSPECTION_SYSTEM_GUIDE.md) | 대상 창/카메라 입력, 라벨 검수, YOLO·AOI 복합 판정, 현장 확장 경계 |
@@ -39,7 +41,7 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 
 - OpenCV 이미지 탐색 및 클릭
 - Tesseract 범용 OCR과 대상 프로그램 폰트 샘플을 누적하는 전용 글자 OCR, 숫자 임계값, 정규식 그룹 결과 변수
-- 최초 발견 이미지를 화면 이탈까지 따라가며 커서를 이동하는 적응형 대상 추적
+- 클릭·키 입력과 별도로 켜는 동일 대상 추적, 광학 흐름·다중 외형 재탐지·YOLO 하이브리드 재결합
 - 프로젝트별 라벨 샘플을 사용하는 대표 이미지 사전과 색상/회색/윤곽·다중 크기 판정
 - YOLO ONNX 모델 기반 객체 감지
 - AOI OK/NG 기준 검사와 ROI 게이지 퍼센트 판정
@@ -76,7 +78,17 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 
 ## 이번 릴리즈
 
-현재 개발 버전은 `1.4.4`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+현재 개발 버전은 `1.4.5`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+
+`1.4.5`의 핵심 개선:
+
+- `마우스 액션`과 `찾은 동일 대상을 계속 따라가기`를 분리했습니다. 클릭·키 입력은 최초 인식 시 기존 설정대로 1회 실행하고, 이후 커서만 대상을 따라갑니다.
+- 광학 흐름으로 이동·회전을 추적하고 최초 외형과 신뢰도 높은 중간 외형을 함께 보존해, 직전 화면의 배경으로 추적 기준이 오염되는 문제를 줄였습니다.
+- 대상이 점점 투명해지거나 잠깐 가려질 때 최근 속도로 짧게 위치를 예측하고, 허용 프레임을 넘으면 다른 대상을 따라가지 않도록 종료합니다.
+- YOLO 하이브리드는 같은 클래스 후보 중 이전 위치·속도·겹침에 가장 맞는 개체를 재결합합니다. YOLO 모델이 없으면 시각 동일성 방식으로 안전하게 대체됩니다.
+- 기존 `대상 따라가기` 마우스 액션은 새 추적 설정으로 자동 이관되며, 내장 템플릿과 일괄 설정도 새 구조를 지원합니다.
+- 첨부 영상과 같은 이동·회전·점진 투명화 흐름을 합성 회귀 검사로 재현하고, 같은 클래스의 먼 방해 대상을 바꾸어 잡지 않는 것도 검증했습니다.
+- 자세한 사용법은 [`동일 대상 추적 가이드`](docs/TARGET_IDENTITY_TRACKING_GUIDE.md), 참고 프로그램 분석은 [`참고 저장소 기능 분석`](docs/REFERENCE_FEATURE_ANALYSIS_1.4.5.md)에 정리했습니다.
 
 `1.4.4`의 핵심 개선:
 

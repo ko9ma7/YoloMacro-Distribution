@@ -1,10 +1,10 @@
 # YoloMacro 전체 사용자 설명서
 
-이 문서는 YoloMacro를 처음 실행하는 단계부터 화면 인식 자동화, 전용 글자 OCR, 대상 추적, 대표 이미지 사전, AOI 검사, YOLO 데이터 제작과 모델 연결까지 전체 흐름을 안내하는 문서의 시작점입니다. 현재 정식 프로그램 버전은 `1.4.4`입니다.
+이 문서는 YoloMacro를 처음 실행하는 단계부터 화면 인식 자동화, 전용 글자 OCR, 동일 대상 추적, 대표 이미지 사전, AOI 검사, YOLO 데이터 제작과 모델 연결까지 전체 흐름을 안내하는 문서의 시작점입니다. 현재 정식 프로그램 버전은 `1.4.5`입니다.
 
 [한국어](USER_MANUAL.md) · [English](USER_MANUAL_EN.md) · [공개 GitHub Pages 문서](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-## v1.4.4 시작 화면과 활성화
+## v1.4.5 시작 화면과 활성화
 
 - 서명된 원격 활성화가 정상이면 프로그램은 항상 `RPA 실행` 화면으로 시작합니다.
 - 원격 비활성화, 만료, 서명 오류, 네트워크/응답 오류, 최소 버전 미달인 경우에만 `설정`의 활성화 화면으로 이동합니다.
@@ -22,6 +22,7 @@
 | 설치 후 처음 프로젝트를 만들고 실행하기 | [RPA 실행 완전 가이드](RPA_EXECUTION_GUIDE.md) |
 | 정상/불량 샘플로 화면 품질 검사하기 | [AOI 학습과 검사 가이드](AOI_GUIDE.md) |
 | 화면의 글자·숫자를 읽거나 예시 이미지로 상태 분류하기 | [OCR·대표 이미지 사전 가이드](OCR_AND_VISUAL_DICTIONARY_GUIDE.md) |
+| 회전·투명화되는 동일 대상을 마우스로 따라가기 | [동일 대상 추적 가이드](TARGET_IDENTITY_TRACKING_GUIDE.md) |
 | 이미지에 박스를 그리고 YOLO 학습·ONNX 연결까지 완료하기 | [YOLO 라벨링·학습·연결 A-Z](YOLO_LABELING_TRAINING_GUIDE.md) |
 | 메뉴와 설정을 빠르게 찾아보기 | [전체 기능 참고서](FEATURE_REFERENCE.md) |
 | 관찰 실행의 안전 범위 이해하기 | [관찰 실행 안내](OBSERVE_MODE_1.2.1.md) |
@@ -122,4 +123,4 @@ YoloMacro의 주 화면은 네 개 탭으로 구성됩니다.
 
 ## 문서와 구현의 기준
 
-YoloMacro 내부 기능 설명은 이 저장소의 `v1.4.4` 코드와 실제 UI를 기준으로 작성했습니다. YOLO 학습·ONNX 변환 명령은 최신 Ultralytics 공식 문서를 기준으로 하며, 설치된 Ultralytics 버전에 따라 기본 모델 이름이나 옵션이 달라질 수 있습니다.
+YoloMacro 내부 기능 설명은 이 저장소의 `v1.4.5` 코드와 실제 UI를 기준으로 작성했습니다. YOLO 학습·ONNX 변환 명령은 최신 Ultralytics 공식 문서를 기준으로 하며, 설치된 Ultralytics 버전에 따라 기본 모델 이름이나 옵션이 달라질 수 있습니다.

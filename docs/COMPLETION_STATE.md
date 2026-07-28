@@ -1,10 +1,10 @@
 # YoloMacro Completion State
 
-Last updated: 2026-07-23
+Last updated: 2026-07-28
 
 ## Stable Project Baseline
 
-- Current app version: `1.4.2`
+- Current app version: `1.4.4`
 - Current stable project save: `nowPANG-15`
 - Last known safe start-button policy:
   - only one enabled start/continue image variant
@@ -23,7 +23,7 @@ Last updated: 2026-07-23
 ## Current Architecture
 
 - `YoloMacro`: WPF executable and user interface.
-- `YoloMacro.CoreLib.dll`: core engine, Win32 capture/input, OpenCV matching, YOLO, AOI, template manager, update manager, settings.
+- `YoloMacro.CoreLib.dll`: core engine, Win32 capture/input, OpenCV matching, YOLO, AOI, OCR, visual dictionary, template manager, update manager, settings.
 - `artifacts/*`: smoke tests and diagnostic programs.
 - `distribution/update-manifest.json`: update metadata published as a GitHub Release asset.
 

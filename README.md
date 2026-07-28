@@ -2,7 +2,7 @@
 
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-현재 정식 버전은 `1.4.3`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
+현재 정식 버전은 `1.4.4`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
 YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.
 
@@ -38,7 +38,8 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 ## 주요 기능
 
 - OpenCV 이미지 탐색 및 클릭
-- Tesseract 기반 한국어·영문 OCR, 숫자 임계값, 정규식 그룹 결과 변수
+- Tesseract 범용 OCR과 대상 프로그램 폰트 샘플을 누적하는 전용 글자 OCR, 숫자 임계값, 정규식 그룹 결과 변수
+- 최초 발견 이미지를 화면 이탈까지 따라가며 커서를 이동하는 적응형 대상 추적
 - 프로젝트별 라벨 샘플을 사용하는 대표 이미지 사전과 색상/회색/윤곽·다중 크기 판정
 - YOLO ONNX 모델 기반 객체 감지
 - AOI OK/NG 기준 검사와 ROI 게이지 퍼센트 판정
@@ -75,7 +76,15 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 
 ## 이번 릴리즈
 
-현재 개발 버전은 `1.4.3`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+현재 개발 버전은 `1.4.4`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+
+`1.4.4`의 핵심 개선:
+
+- OCR 프로필마다 `범용 Tesseract`, `전용 글자 샘플`, `혼합 자동 선택`을 고를 수 있습니다.
+- `0~9`, 영문, 한글 등 라벨별 실제 화면 ROI나 여러 이미지 파일을 계속 누적해 대상 프로그램 전용 글자 사전을 만듭니다.
+- 전용 OCR 결과도 기존 전체 일치·포함·정규식·숫자 이상/이하 조건과 `{last.text}`, `{last.number}` 후속 액션을 그대로 사용합니다.
+- `대상 따라가기` 마우스 액션은 처음 찾은 이미지의 회색조와 외곽선을 매 프레임 갱신해, 대상이 움직이거나 색이 바뀌어도 중심을 따라갑니다.
+- 상태 배너를 `설치 버전`과 `자동 DLL 정책 버전`으로 분리해 설치된 1.4.4를 1.4.2로 오해하던 표시를 수정했습니다.
 
 `1.4.3`의 핵심 개선:
 

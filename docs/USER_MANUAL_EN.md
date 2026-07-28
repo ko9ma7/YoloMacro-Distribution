@@ -1,4 +1,4 @@
-# YoloMacro 1.4.4 User Manual
+# YoloMacro 1.4.5 User Manual
 
 [한국어 설명서](USER_MANUAL.md) · [English Manual](USER_MANUAL_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
@@ -6,7 +6,7 @@ This manual covers the normal path from installation to production-safe RPA exec
 
 ## 1. Install and verify
 
-1. Download `YoloMacro-v1.4.4-win-x64.zip` from the [public v1.4.4 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.4).
+1. Download `YoloMacro-v1.4.5-win-x64.zip` from the [public v1.4.5 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.5).
 2. Extract the complete ZIP. Do not run the executable from inside the archive.
 3. Install the .NET 8 Desktop Runtime if Windows requests it.
 4. Run `YoloMacro.exe`.
@@ -55,7 +55,7 @@ Project images, labels, AOI samples, replay evidence, and settings are isolated 
 
 Use the smallest practical ROI. It improves speed and reduces false positives.
 
-See the [OCR and Visual Dictionary Guide](OCR_AND_VISUAL_DICTIONARY_GUIDE_EN.md) for general/custom/hybrid OCR, glyph samples, regex/runtime variables, target tracking and production tuning. A v1.4.4 installation must be extracted as a complete ZIP because OCR requires the included managed/native Tesseract files and language data.
+See the [OCR and Visual Dictionary Guide](OCR_AND_VISUAL_DICTIONARY_GUIDE_EN.md) for general/custom/hybrid OCR, glyph samples and regex/runtime variables. Use the [Target Identity Tracking Guide](TARGET_IDENTITY_TRACKING_GUIDE_EN.md) for separate click/tracking controls, fading targets and YOLO reacquisition. A v1.4.5 installation must be extracted as a complete ZIP because OCR requires the included managed/native Tesseract files and language data.
 
 ## 6. Safe execution workflow
 

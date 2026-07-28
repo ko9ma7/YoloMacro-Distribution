@@ -4,14 +4,14 @@
 
 YoloMacro is a Windows vision-RPA and inspection application that combines OpenCV matching, YOLO object detection, AOI comparison, camera or target-window capture, branching logic, and controlled input actions in one workflow.
 
-The current stable release is `1.4.4`. Verified binaries and public documentation live in [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution). Source code, historical internal material, signing keys, customer images, and datasets remain in the private source repository.
+The current stable release is `1.4.5`. Verified binaries and public documentation live in [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution). Source code, historical internal material, signing keys, customer images, and datasets remain in the private source repository.
 
 ## Highlights
 
 - Target-window or selected USB/industrial-camera input
 - OpenCV template matching with ROI and preprocessing presets
 - General Tesseract OCR plus target-specific labeled glyph samples, regex groups, numeric comparisons and reusable profiles
-- Adaptive mouse tracking that follows a detected image until it leaves the capture surface
+- Same-target identity tracking, separate from click/key actions, with optical flow, anchored appearance re-detection and optional YOLO reacquisition
 - Project-local visual dictionaries for labeled screen-state classification
 - YOLO ONNX inference, NMS, class metadata, dataset export and quality checks
 - AOI OK/NG samples, alignment ROI, adaptive tolerance and F1 calibration
@@ -41,6 +41,8 @@ The current stable release is `1.4.4`. Verified binaries and public documentatio
 | [Remote Activation and Update](docs/REMOTE_ACTIVATION_AND_UPDATE.md) | Signed manifest, cache, updater and rollback operations |
 | [Remote Activation and Update (English)](docs/REMOTE_ACTIVATION_AND_UPDATE_EN.md) | Public distribution boundary and administrator workflow |
 | [OCR and Visual Dictionary Guide](docs/OCR_AND_VISUAL_DICTIONARY_GUIDE_EN.md) | Text/number decisions, runtime variables and example-driven state classification |
+| [Target Identity Tracking Guide](docs/TARGET_IDENTITY_TRACKING_GUIDE_EN.md) | Separate input/tracking controls, fading targets, YOLO hybrid reacquisition and limits |
+| [v1.4.5 English Release Notes](docs/RELEASE_NOTES_1.4.5_EN.md) | Same-target tracking, migration and verification |
 | [v1.4.4 English Release Notes](docs/RELEASE_NOTES_1.4.4_EN.md) | Custom glyph OCR, hybrid fallback, adaptive target tracking and version clarity |
 | [v1.4.3 English Release Notes](docs/RELEASE_NOTES_1.4.3_EN.md) | General OCR, visual dictionaries and package requirements |
 | [v1.4.2 English Release Notes](docs/RELEASE_NOTES_1.4.2_EN.md) | Ordered flow, rapid click, inactive key input and stable runtime names |
@@ -60,4 +62,4 @@ dotnet restore YoloMacro.sln --locked-mode
 dotnet build YoloMacro.sln -c Release --no-restore
 ```
 
-Runtime: Windows, .NET 8 Desktop Runtime, and the native dependencies included in the verified release package. For v1.4.4, extract the complete ZIP so the Tesseract managed/native files and `tessdata` remain together.
+Runtime: Windows, .NET 8 Desktop Runtime, and the native dependencies included in the verified release package. For v1.4.5, extract the complete ZIP so the Tesseract managed/native files and `tessdata` remain together.

@@ -2,7 +2,7 @@
 
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-현재 정식 버전은 `1.4.2`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
+현재 정식 버전은 `1.4.3`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
 YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.
 
@@ -20,6 +20,7 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 | [일괄 설정·창 복구·Replay 관리](docs/BATCH_SETTINGS_AND_REPLAY_1.3.0.md) | 다중 선택 설정 복사, 사라진 창 복구, Replay 용량 제한 |
 | [고속 캡처·선택 값 일괄 변경](docs/PERFORMANCE_AND_BULK_EDIT_1.3.1.md) | 첫 프레임 공유, CPU 최적화, 체크한 필드만 일괄 변경 |
 | [CPU 회귀 수정과 실측](docs/CPU_OPTIMIZATION_1.3.2.md) | 미리보기 폭주 수정, ROI 적응형 변환, 실제 프로젝트 CPU 비교 |
+| [OCR·대표 이미지 사전](docs/OCR_AND_VISUAL_DICTIONARY_GUIDE.md) | 화면 글자·숫자 판정, 정규식 변수, 라벨별 대표 이미지 상태 분류 |
 | [AOI 학습과 검사 가이드](docs/AOI_GUIDE.md) | 검사/정렬 ROI, OK·NG 샘플, 기준 계산, RPA 연결 |
 | [YOLO 라벨링·학습·연결 A-Z](docs/YOLO_LABELING_TRAINING_GUIDE.md) | 이미지 수집, 라벨링, 품질 검사, train/val, 학습, ONNX, 모델 로드 |
 | [YOLO·AOI 검사 설비 구성](docs/INSPECTION_SYSTEM_GUIDE.md) | 대상 창/카메라 입력, 라벨 검수, YOLO·AOI 복합 판정, 현장 확장 경계 |
@@ -37,6 +38,8 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 ## 주요 기능
 
 - OpenCV 이미지 탐색 및 클릭
+- Tesseract 기반 한국어·영문 OCR, 숫자 임계값, 정규식 그룹 결과 변수
+- 프로젝트별 라벨 샘플을 사용하는 대표 이미지 사전과 색상/회색/윤곽·다중 크기 판정
 - YOLO ONNX 모델 기반 객체 감지
 - AOI OK/NG 기준 검사와 ROI 게이지 퍼센트 판정
 - 현재 프로그램 화면에서 OK/NG 샘플과 YOLO 학습 이미지 캡처
@@ -72,7 +75,16 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 
 ## 이번 릴리즈
 
-현재 개발 버전은 `1.4.2`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+현재 개발 버전은 `1.4.3`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
+
+`1.4.3`의 핵심 개선:
+
+- 화면의 한국어·영문·숫자를 읽고 포함/일치/정규식/숫자 임계값으로 판정하는 OCR 액션을 추가했습니다.
+- 작은 글자 확대, 이진화·적응형 이진화, 반전, 문자 화이트리스트, PSM, 최소 신뢰도를 프로필로 저장하고 현재 ROI에서 즉시 시험할 수 있습니다.
+- `ready/busy/error` 같은 상태별 ROI 샘플을 직접 모아 가장 가까운 라벨을 찾는 대표 이미지 사전을 추가했습니다.
+- OCR의 `{last.text}`, `{last.number}`, 정규식 이름 그룹과 대표 사전의 `{last.label}`을 기존 키 입력·메시지·분기에서 사용할 수 있습니다.
+- 선택 설정 복사, 값 일괄 변경, 기본 템플릿, Replay·능동 학습 흐름에 두 인식 엔진을 연결했습니다.
+- 전체 배포 ZIP에는 Tesseract 관리/네이티브 런타임과 한국어·영문 언어 데이터가 포함됩니다. 기존 설치는 DLL 하나만 덮어쓰지 말고 새 ZIP 전체를 새 폴더에 풀어 사용해야 합니다.
 
 `1.4.2`의 핵심 수정:
 

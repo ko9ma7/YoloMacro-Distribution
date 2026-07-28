@@ -2,6 +2,8 @@
 
 [한국어 운영 가이드](REMOTE_ACTIVATION_AND_UPDATE.md) · [English](REMOTE_ACTIVATION_AND_UPDATE_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
+> v1.4.3 packaging note: OCR requires managed/native runtime files and language data. The existing CoreLib-only updater cannot install those dependencies, so v1.4.3 must be installed from the complete ZIP in a new folder. Keep the remote manifest's single-DLL update fields on the last compatible version until a signed multi-file updater is available.
+
 ## Purpose
 
 YoloMacro 1.4.0 controls equipment operation through a strict ECDSA P-256 signed manifest. This is an equipment-wide feature gate, not a GitHub-login or per-user licensing system.

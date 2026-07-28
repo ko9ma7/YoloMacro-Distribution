@@ -1,5 +1,7 @@
 # 원격 활성화와 보안 업데이트 운영 가이드
 
+> v1.4.3 배포 주의: OCR은 관리 DLL, 네이티브 런타임과 언어 데이터를 함께 사용합니다. 기존 CoreLib 단일 파일 updater는 이 의존성을 설치할 수 없으므로 v1.4.3은 전체 ZIP을 새 폴더에 풀어 업그레이드합니다. 원격 활성화 manifest의 단일 DLL 업데이트 값은 서명된 다중 파일 updater가 도입될 때까지 마지막 호환 버전으로 유지합니다.
+
 ## 목적
 
 YoloMacro 1.4.0부터 저장소 공개 여부가 아니라 GitHub Pages의 서명된 `manifest.json`으로 핵심 기능을 On/Off 합니다. GitHub 저장소가 public이어도 `enabled=false`이면 실행할 수 없고, 저장소가 private이어도 공개 Pages manifest가 유효하면 실행할 수 있습니다.

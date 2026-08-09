@@ -1,5 +1,7 @@
 # YoloMacro
 
+> **배포 동결 안내:** 이 저장소는 기존 YoloMacro `1.4.x` 사용자를 위한 보관·유지 저장소입니다. 새로운 기능과 새 배포는 [VisionFlow Studio](https://github.com/ko9ma7/VisionFlow-Studio)에서 별도로 진행합니다. 자세한 제품 경계와 동결 정책은 [FROZEN.md](FROZEN.md)를 확인하세요.
+
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
 현재 정식 버전은 `1.4.5`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.

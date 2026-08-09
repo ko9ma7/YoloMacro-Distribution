@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "productId": "visionflow-studio",
+  "enabled": true,
+  "minimumVersion": "2.5.0",
+  "latestVersion": "2.6.0",
+  "publishedAt": "2026-08-08T23:46:05.6906978+00:00",
+  "expiresAt": "2026-09-22T23:46:05.6906978+00:00",
+  "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/visionflow-v2.6.0/YoloMacro.CoreLib.dll",
+  "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/visionflow-v2.6.0",
+  "dllVersion": "2.6.0",
+  "dllSha256": "c94c1fa440fd86d90c67dd0d2e7192b43afa17877bf4cfad33c79ceacdfc7eea",
+  "signature": "ZCI96CZjM04BKWL8WFvEqEcTHqzdCspOlddovlNB2PpmW4Ohlgh7h9mGyE0aIENdOc/s213kP6HHB/ooj2saGw=="
+}

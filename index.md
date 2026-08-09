@@ -12,7 +12,7 @@ YoloMacro의 공개 배포 전용 저장소입니다. 소스 코드와 내부 �
 
 ### 다운로드와 시작
 
-1. [v1.4.5 릴리즈](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.5)에서 `YoloMacro-v1.4.5-win-x64.zip`을 받습니다.
+1. [v1.4.6 릴리즈](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6)에서 `YoloMacro-v1.4.6-win-x64.zip`을 받습니다.
 2. ZIP 전체를 풀고 `YoloMacro.exe`를 실행합니다.
 3. 활성화가 정상이면 **RPA 실행** 화면으로 시작합니다. 비활성·만료·서명/네트워크/응답 오류·최소 버전 미달일 때만 **설정**으로 이동합니다.
 4. 설정에서 수동으로 `다시 확인`해 성공한 경우에는 현재 탭을 유지합니다.
@@ -21,7 +21,8 @@ YoloMacro의 공개 배포 전용 저장소입니다. 소스 코드와 내부 �
 - [OCR·대표 이미지 사전 가이드](docs/OCR_AND_VISUAL_DICTIONARY_GUIDE.md)
 - [동일 대상 추적 가이드](docs/TARGET_IDENTITY_TRACKING_GUIDE.md)
 - [한국어 원격 활성화·업데이트 가이드](docs/REMOTE_ACTIVATION_AND_UPDATE.md)
-- [한국어 v1.4.5 릴리즈 노트](docs/RELEASE_NOTES.v1.4.5.ko.md)
+- [한국어 v1.4.6 릴리즈 노트](docs/RELEASE_NOTES.v1.4.6.ko.md)
+- [통합 활성화 구조](docs/ACTIVATION_STRUCTURE.md)
 
 ### v1.4.5 동일 대상 추적
 
@@ -41,7 +42,7 @@ This is the public distribution repository for YoloMacro. Private source and his
 
 ### Download and start
 
-1. Download `YoloMacro-v1.4.5-win-x64.zip` from the [v1.4.5 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.5).
+1. Download `YoloMacro-v1.4.6-win-x64.zip` from the [v1.4.6 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6).
 2. Extract the complete archive and run `YoloMacro.exe`.
 3. Valid activation opens **RPA Execution** at application startup. Only a final disabled, expired, signature/network/response error, or minimum-version failure opens **Settings**.
 4. A successful manual Retry keeps the current tab.

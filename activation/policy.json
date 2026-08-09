@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "validForDays": 45,
+  "legacyProductId": "yolomacro",
+  "products": [
+    {
+      "productId": "yolomacro",
+      "enabled": true,
+      "minimumVersion": "1.4.0",
+      "latestVersion": "1.4.6",
+      "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v1.4.6/YoloMacro.CoreLib.dll",
+      "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6",
+      "dllVersion": "1.4.6",
+      "dllSha256": "867633bf1182474fa14853be533f33c2f7bca9f90cded1b0f47aad58464ebf52"
+    },
+    {
+      "productId": "visionflow-studio",
+      "enabled": true,
+      "minimumVersion": "2.5.0",
+      "latestVersion": "2.6.0",
+      "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/visionflow-v2.6.0/YoloMacro.CoreLib.dll",
+      "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/visionflow-v2.6.0",
+      "dllVersion": "2.6.0",
+      "dllSha256": "c94c1fa440fd86d90c67dd0d2e7192b43afa17877bf4cfad33c79ceacdfc7eea"
+    }
+  ]
+}

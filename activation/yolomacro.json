@@ -1,5 +1,6 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "productId": "yolomacro",
   "enabled": true,
   "minimumVersion": "1.4.0",
   "latestVersion": "1.4.6",
@@ -9,5 +10,5 @@
   "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6",
   "dllVersion": "1.4.6",
   "dllSha256": "867633bf1182474fa14853be533f33c2f7bca9f90cded1b0f47aad58464ebf52",
-  "signature": "zF7O+UD2QPMvONrNTXBde/W4/TYwm06u/CckTAyq/TahR//AeO7kLKkNmo3VVlpXBsU+EIvB2Z5APKtnDFY1dg=="
+  "signature": "S8RLnzDSIC45cEMAiiY7GPqDeY3vf4KMYAIcI5zD9fX857tbS4ud8vRfe4eJ5+5zFsQ2Vxh6M98kyjCYYq8xvQ=="
 }

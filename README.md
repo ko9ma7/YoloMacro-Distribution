@@ -2,7 +2,7 @@
 
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
-현재 정식 버전은 `1.4.6`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
+현재 정식 버전은 `1.4.5`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
 YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.
 
@@ -27,7 +27,6 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 | [YOLO 라벨링·학습·연결 A-Z](docs/YOLO_LABELING_TRAINING_GUIDE.md) | 이미지 수집, 라벨링, 품질 검사, train/val, 학습, ONNX, 모델 로드 |
 | [YOLO·AOI 검사 설비 구성](docs/INSPECTION_SYSTEM_GUIDE.md) | 대상 창/카메라 입력, 라벨 검수, YOLO·AOI 복합 판정, 현장 확장 경계 |
 | [원격 활성화·보안 업데이트](docs/REMOTE_ACTIVATION_AND_UPDATE.md) | GitHub Pages On/Off, 서명, 캐시, DLL 업데이트와 복구 |
-| [통합 활성화 구조](docs/ACTIVATION_STRUCTURE.md) | 제품별 서명문, 한 공개키, 자동 만료 갱신 구조 |
 | [Remote Activation &amp; Update (English)](docs/REMOTE_ACTIVATION_AND_UPDATE_EN.md) | Signed manifest, public distribution, updater and rollback operations |
 | [관리자 운영 확인 프롬프트](docs/ADMIN_OPERATION_PROMPT.md) | 키·토큰을 노출하지 않는 활성화 상태 점검용 프롬프트 |
 | [전체 기능 참고서](docs/FEATURE_REFERENCE.md) | 모든 메뉴, 탭, 액션, 설정과 저장 폴더 |
@@ -79,13 +78,7 @@ YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직
 
 ## 이번 릴리즈
 
-현재 개발 버전은 `1.4.6`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
-
-`1.4.6`의 핵심 개선:
-
-- ROI 배경에 없던 새 도형의 실제 윤곽을 감지해 이동·정지·소실까지 추적하고 마지막 확정 중심을 실행합니다.
-- 작은 설명용 포인터는 최소 면적으로 제외하며 관찰 실행에서 동일 상태를 입력 없이 확인합니다.
-- 키 누름 시간·반복 횟수·반복 간격과 제품별 서명 활성화를 추가했습니다.
+현재 개발 버전은 `1.4.5`입니다. 정식 배포 파일은 GitHub Release 태그에서 생성됩니다.
 
 `1.4.5`의 핵심 개선:
 

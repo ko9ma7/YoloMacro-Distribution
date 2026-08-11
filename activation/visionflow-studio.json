@@ -5,10 +5,10 @@
   "enabled": true,
   "minimumVersion": "2.6.0",
   "latestVersion": "2.6.0",
-  "publishedAt": "2026-08-11T10:41:22.6060000+00:00",
+  "publishedAt": "2026-08-11T10:43:44.9845233+00:00",
   "updateUrl": "https://github.com/ko9ma7/VisionFlow-Studio/releases/download/v2.6.0/VisionFlowStudio.CoreLib.dll",
   "releaseNotesUrl": "https://github.com/ko9ma7/VisionFlow-Studio/releases/tag/v2.6.0",
   "dllVersion": "2.6.0",
   "dllSha256": "7d5d4735b775688e52c6348e386c3026a365067885aef3f1c0e43a67a8dc097f",
-  "signature": "pQCtdRMHEDpLGtYTtsGX7bZqnxCsihHlRx5Nq6g5It9ZkVXZV6+ARZN07RszwKsocGY1iNJcJ/JjwbC/SzceNA=="
+  "signature": "2QJ6qZwo8ooiA3GhvMKVydUOQAsBFjkPYPmsugqul7OUBBgA3NEqFCuHWpOp4hJ1Zv/4ZbeRcgzKXPTw2WCQaQ=="
 }

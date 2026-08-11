@@ -5,10 +5,10 @@
   "enabled": true,
   "minimumVersion": "1.4.0",
   "latestVersion": "1.4.6",
-  "publishedAt": "2026-08-11T10:41:22.6060000+00:00",
+  "publishedAt": "2026-08-11T10:43:44.9845233+00:00",
   "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v1.4.6/YoloMacro.CoreLib.dll",
   "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6",
   "dllVersion": "1.4.6",
   "dllSha256": "0ffbee0ef67d4269640305fcc41253569edf1a91132a84399c9e9fefe3a39506",
-  "signature": "e6yRjxSPrTnRqGi0Nw7G7SyQt3bjO7c/UHHL3nZrMjJYaZ81OcR1Qa6/rxAanq+7z9L/L0XJdgcYSe4Mb2gS8A=="
+  "signature": "6pMBHqSxoBWvhDNMhtrExCVIt0SNvO6LLTJaOeZhW+T6zmiWzeixmlQJZ2dCgfmqRLExGGLKBkVk8otNCgCf2w=="
 }

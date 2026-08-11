@@ -26,9 +26,10 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 concurrency:
-  group: unified-web-activation
+  group: github-pages
   cancel-in-progress: false
 
 jobs:
@@ -47,7 +48,6 @@ jobs:
           SOURCE_BRANCH: ${{ github.ref_name }}
           SOURCE_ACTOR: ${{ github.actor }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          GH_TOKEN: ${{ github.token }}
         run: |
           if ($env:SOURCE_BRANCH -ne $env:DEFAULT_BRANCH) {
             throw "Run activation management only from the default branch '$env:DEFAULT_BRANCH'."
@@ -113,7 +113,6 @@ jobs:
           git add activation/policy.json activation/history.json activation/yolomacro.json activation/visionflow-studio.json manifest.json
           git commit -m "chore: $env:CHANNEL_OPERATION $env:CHANNEL_PRODUCT activation"
           git push origin "HEAD:$env:SOURCE_BRANCH"
-          gh api --method POST "repos/${{ github.repository }}/pages/builds"
 
       - name: Upload signed policy evidence
         uses: actions/upload-artifact@v4
@@ -126,3 +125,15 @@ jobs:
             activation/history.json
             activation/public-key.pem
           if-no-files-found: error
+      - name: Prepare static Pages artifact
+        shell: pwsh
+        run: |
+          git archive --format=zip HEAD -o distribution-site.zip
+          Expand-Archive -LiteralPath distribution-site.zip -DestinationPath _site -Force
+          New-Item -ItemType File -Path _site/.nojekyll -Force | Out-Null
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy signed policies and public site
+        uses: actions/deploy-pages@v4

@@ -3,36 +3,180 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YoloMacro · VisionFlow Studio Distribution</title>
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="VisionFlow Studio 최신 공개 배포, YoloMacro 레거시 다운로드와 통합 웹 인증">
+  <title>VisionFlow Studio Distribution</title>
+  <link rel="icon" href="assets/visionflow-studio-icon.png">
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-    body { margin: 0; background: #0f172a; color: #e2e8f0; }
-    main { max-width: 880px; margin: 0 auto; padding: 64px 24px; }
-    h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.08; margin: 0 0 18px; }
-    p { color: #cbd5e1; line-height: 1.7; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin-top: 32px; }
-    article { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 22px; }
-    a { color: #7dd3fc; }
-    code { color: #a7f3d0; }
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --panel: #0e1c2f;
+      --panel-2: #13253c;
+      --line: #27415f;
+      --text: #eef7ff;
+      --muted: #a9bdd1;
+      --accent: #55d6be;
+      --accent-2: #5aa7ff;
+      --legacy: #f6c76d;
+      font-family: Inter, Pretendard, "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 78% -10%, rgba(90,167,255,.22), transparent 36rem),
+        radial-gradient(circle at 10% 25%, rgba(85,214,190,.13), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    header { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 760; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; }
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: .92rem; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--text); }
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 54px; align-items: center; padding: 74px 0 84px; }
+    .hero > *, .products > *, .section-title > * { min-width: 0; }
+    .eyebrow { color: var(--accent); font-weight: 800; letter-spacing: .12em; font-size: .78rem; text-transform: uppercase; }
+    h1 { margin: 14px 0 22px; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: .95; letter-spacing: -.055em; }
+    h1 span { color: var(--accent); }
+    .lead { width: 100%; max-width: 700px; color: var(--muted); line-height: 1.75; font-size: 1.08rem; overflow-wrap: anywhere; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 20px; border-radius: 12px; border: 1px solid var(--line); text-decoration: none; font-weight: 750; }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: #03231e; }
+    .button.secondary { background: rgba(14,28,47,.78); }
+    .product-mark { position: relative; display: grid; place-items: center; min-height: 410px; border: 1px solid var(--line); border-radius: 34px; background: linear-gradient(145deg, rgba(19,37,60,.92), rgba(7,17,31,.72)); overflow: hidden; }
+    .product-mark::before { content: ""; position: absolute; width: 330px; height: 330px; border-radius: 50%; background: rgba(85,214,190,.13); filter: blur(8px); }
+    .product-mark img { position: relative; width: min(58%, 250px); height: auto; filter: drop-shadow(0 30px 44px rgba(0,0,0,.35)); }
+    .product-mark .version { position: absolute; left: 24px; bottom: 22px; color: var(--muted); font-size: .9rem; }
+    section { padding: 68px 0; }
+    .section-title { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+    h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.035em; }
+    .section-title p { max-width: 560px; color: var(--muted); line-height: 1.65; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,28,47,.84); }
+    .card strong { display: block; font-size: 1.08rem; margin-bottom: 10px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .products { display: grid; grid-template-columns: 1.4fr .8fr; gap: 18px; }
+    .product { position: relative; padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); overflow: hidden; }
+    .product.current { background: linear-gradient(140deg, #123047, #0e1c2f 70%); }
+    .badge { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: rgba(85,214,190,.14); color: var(--accent); font-size: .78rem; font-weight: 800; }
+    .legacy .badge { background: rgba(246,199,109,.13); color: var(--legacy); }
+    .product h3 { font-size: 1.55rem; margin: 18px 0 10px; }
+    .product p { color: var(--muted); line-height: 1.65; }
+    .policy { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; color: var(--muted); font-size: .88rem; }
+    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+    .auth-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; counter-reset: step; }
+    .auth-flow .card::before { counter-increment: step; content: "0" counter(step); display: block; color: var(--accent-2); font-size: .78rem; font-weight: 900; margin-bottom: 18px; }
+    .shot { width: 100%; border-radius: 22px; border: 1px solid var(--line); box-shadow: 0 28px 70px rgba(0,0,0,.28); }
+    footer { padding: 42px 0 60px; border-top: 1px solid var(--line); color: var(--muted); display: flex; justify-content: space-between; gap: 24px; }
+    footer a { color: var(--text); }
+    @media (max-width: 820px) {
+      nav { display: none; }
+      .hero, .products { grid-template-columns: minmax(0, 1fr); }
+      .product-mark { min-height: 320px; order: -1; }
+      .grid, .auth-flow { grid-template-columns: 1fr 1fr; }
+      .section-title { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 540px) {
+      .shell { width: auto; margin-inline: 12px; }
+      .hero { padding-top: 36px; }
+      .actions { display: grid; grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      .grid, .auth-flow { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <main>
-    <h1>YoloMacro · VisionFlow Studio</h1>
-    <p>검증된 공개 배포 파일과 두 제품의 서명된 웹 실행 정책을 제공합니다. 실행 정책은 자동 만료되지 않으며 관리자가 채널을 회전하거나 제품을 중지할 때만 변경됩니다.</p>
-    <div class="grid">
-      <article>
-        <h2>YoloMacro</h2>
-        <p><a href="https://github.com/ko9ma7/YoloMacro-Distribution/releases">공개 릴리스 받기</a></p>
-        <p>정책: <a href="activation/yolomacro.json"><code>activation/yolomacro.json</code></a></p>
-      </article>
-      <article>
-        <h2>VisionFlow Studio</h2>
-        <p><a href="https://github.com/ko9ma7/VisionFlow-Studio/releases">제품 릴리스 보기</a></p>
-        <p>정책: <a href="activation/visionflow-studio.json"><code>activation/visionflow-studio.json</code></a></p>
-      </article>
-    </div>
-    <p><a href="docs/UNIFIED_WEB_ACTIVATION.md">통합 웹 인증 운영 문서</a> · <a href="https://github.com/ko9ma7/YoloMacro-Distribution">GitHub 저장소</a></p>
-  </main>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#top"><img src="assets/visionflow-studio-icon.png" alt=""><span>VisionFlow Distribution</span></a>
+      <nav aria-label="주요 메뉴"><a href="#features">기능</a><a href="#products">제품</a><a href="#security">인증</a><a href="docs/VISIONFLOW_STUDIO_2.6.0.md">릴리스 노트</a></nav>
+    </header>
+    <main id="top">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Current release · 2.6.0</div>
+          <h1>See it.<br><span>Find it.</span><br>Automate it.</h1>
+          <p class="lead">VisionFlow Studio는 화면과 카메라에서 이미지·문자·객체·품질 상태를 찾고, 안전한 입력과 분기로 연결하는 최신 Windows 비전 자동화 제품입니다. YoloMacro는 기존 프로젝트를 위한 레거시 배포로 계속 제공합니다.</p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.6.0/VisionFlow-Studio-v2.6.0-win-x64.zip">VisionFlow Studio 다운로드</a>
+            <a class="button secondary" href="docs/VISIONFLOW_STUDIO_2.6.0.md">2.6.0 변경 내용</a>
+          </div>
+        </div>
+        <div class="product-mark" aria-label="VisionFlow Studio 2.6.0">
+          <img src="assets/visionflow-studio-icon.png" alt="VisionFlow Studio 아이콘">
+          <div class="version">Windows · .NET 8 · schema 3 verified</div>
+        </div>
+      </div>
+
+      <section id="features">
+        <div class="section-title"><h2>작게 열고,<br>필요할 때 깊게.</h2><p>기본 작업은 Compact 창에서 빠르게 만들고 보조 기능은 체크한 항목만 오버레이로 설정합니다. Esc로 닫고 Enter로 적용할 수 있어 작은 창에서도 빠르게 편집합니다.</p></div>
+        <div class="grid">
+          <div class="card"><strong>캡처 즉시 작업</strong><p>이미지를 캡처하면 OpenCV 찾기와 좌클릭 기본값으로 바로 등록합니다.</p></div>
+          <div class="card"><strong>다양한 찾기</strong><p>OpenCV, YOLO, AOI, OCR과 대표 이미지 사전을 기능별로 선택합니다.</p></div>
+          <div class="card"><strong>장기 대상 추적</strong><p>다중 패턴, 회전, 크기, 밝기와 짧은 가림을 같은 대상으로 연결합니다.</p></div>
+          <div class="card"><strong>다양한 입력</strong><p>마우스·키보드·반복·누름 유지·상대 좌표와 조건 분기를 구성합니다.</p></div>
+          <div class="card"><strong>관찰 실행</strong><p>실제 입력 없이 탐지·분기·추적 결과를 확인하고 권한과 경로를 검사합니다.</p></div>
+          <div class="card"><strong>기능 찾기</strong><p>Ctrl+K로 원하는 기능을 검색하고 정확한 설정 화면으로 이동합니다.</p></div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="section-title"><h2>한 배포 허브,<br>명확한 제품 경계.</h2><p>최신 제품과 레거시 제품을 같은 이름으로 섞지 않습니다. 패키지와 정책은 제품 ID, 채널과 CoreLib 해시로 구분합니다.</p></div>
+        <div class="products">
+          <article class="product current">
+            <span class="badge">CURRENT</span><h3>VisionFlow Studio 2.6.0</h3>
+            <p>새 설치와 새 프로젝트의 기본 제품. Compact UI, 목적 기반 작업 생성과 확장된 추적·인식 기능을 제공합니다.</p>
+            <div class="actions"><a class="button primary" href="https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0">릴리스 보기</a><a class="button secondary" href="activation/visionflow-studio.json">정책 JSON</a></div>
+            <div class="policy"><span class="status-dot"></span><span id="vfs-policy">정책 확인 중</span></div>
+          </article>
+          <article class="product legacy">
+            <span class="badge">LEGACY</span><h3>YoloMacro 1.4.6</h3>
+            <p>기존 1.4.x 프로젝트 유지용. 공개 패키지와 문서를 보존하고 웹 실행 정책을 계속 제공합니다.</p>
+            <div class="actions"><a class="button secondary" href="https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6">레거시 다운로드</a></div>
+            <div class="policy"><span class="status-dot"></span><span id="ym-policy">정책 확인 중</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="security">
+        <div class="section-title"><h2>잠금은 웹에서만,<br>사용은 계속.</h2><p>정책은 자동 만료되지 않습니다. 변경이 없으면 계속 사용하고, 관리자가 채널을 회전하거나 제품을 중지할 때만 기존 빌드를 잠급니다.</p></div>
+        <div class="auth-flow">
+          <div class="card"><strong>웹 Action</strong><p>GitHub Actions에서 publish, rotate, enable, disable을 선택합니다.</p></div>
+          <div class="card"><strong>단일 개인키</strong><p>서명 Secret은 Distribution 한 곳에만 보관합니다.</p></div>
+          <div class="card"><strong>제품별 정책</strong><p>서로 다른 제품 ID·채널·DLL 해시를 ECDSA로 서명합니다.</p></div>
+          <div class="card"><strong>릴리스 동봉</strong><p>서명 정책을 ZIP에 포함해 최초 오프라인 실행도 검증합니다.</p></div>
+        </div>
+      </section>
+
+      <section aria-label="VisionFlow Studio 화면">
+        <img class="shot" src="artifacts/visionflow-main.png" alt="VisionFlow Studio 실행 화면">
+      </section>
+    </main>
+    <footer><span>VisionFlow Studio Distribution · 2026</span><span><a href="https://github.com/ko9ma7/YoloMacro-Distribution">GitHub</a> · <a href="docs/UNIFIED_WEB_ACTIVATION.md">인증 운영</a> · <a href="README.en.md">English</a></span></footer>
+  </div>
+  <script>
+    async function showPolicy(file, target) {
+      try {
+        const response = await fetch(file, { cache: "no-store" });
+        if (!response.ok) throw new Error();
+        const policy = await response.json();
+        document.getElementById(target).textContent = `${policy.enabled ? "실행 허용" : "실행 중지"} · ${policy.latestVersion} · ${policy.channelId}`;
+      } catch {
+        document.getElementById(target).textContent = "정책 JSON 직접 보기";
+      }
+    }
+    showPolicy("activation/visionflow-studio.json", "vfs-policy");
+    showPolicy("activation/yolomacro.json", "ym-policy");
+  </script>
 </body>
 </html>

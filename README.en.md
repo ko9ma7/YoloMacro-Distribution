@@ -1,65 +1,20 @@
-# YoloMacro
+# VisionFlow Studio Distribution
 
-[한국어](README.md) · [English](README.en.md) · [Korean User Manual](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [Public Documentation](https://ko9ma7.github.io/YoloMacro-Distribution/)
+This repository is the **current public distribution hub for VisionFlow Studio**, the **legacy archive for YoloMacro**, and the single web-managed signing authority for both products.
 
-YoloMacro is a Windows vision-RPA and inspection application that combines OpenCV matching, YOLO object detection, AOI comparison, camera or target-window capture, branching logic, and controlled input actions in one workflow.
+[Public download page](https://ko9ma7.github.io/YoloMacro-Distribution/) · [VisionFlow Studio 2.6.0](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0) · [Unified activation operations](docs/UNIFIED_WEB_ACTIVATION.md) · [한국어](README.md)
 
-The current stable release is `1.4.5`. Verified binaries and public documentation live in [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution). Source code, historical internal material, signing keys, customer images, and datasets remain in the private source repository.
+| Product | Status | Public version | Policy |
+|---|---|---:|---|
+| **VisionFlow Studio** | Current product | **2.6.0** | [`visionflow-studio.json`](activation/visionflow-studio.json) |
+| YoloMacro | Maintained legacy | 1.4.6 | [`yolomacro.json`](activation/yolomacro.json) |
 
-## Highlights
+Use VisionFlow Studio for new installations and projects. It adds a compact action editor, purpose-based task creation, feature search, overlay configuration, multi-pattern long-term tracking, and the inherited OpenCV, YOLO, AOI, OCR, visual-dictionary and safe-execution capabilities.
 
-- Target-window or selected USB/industrial-camera input
-- OpenCV template matching with ROI and preprocessing presets
-- General Tesseract OCR plus target-specific labeled glyph samples, regex groups, numeric comparisons and reusable profiles
-- Same-target identity tracking, separate from click/key actions, with optical flow, anchored appearance re-detection and optional YOLO reacquisition
-- Project-local visual dictionaries for labeled screen-state classification
-- YOLO ONNX inference, NMS, class metadata, dataset export and quality checks
-- AOI OK/NG samples, alignment ROI, adaptive tolerance and F1 calibration
-- Bounding-box, polygon and assisted labeling with reviewed/negative states
-- Observe mode for decision-only validation before real input is enabled
-- Project safety validation, replay retention, diagnostics and performance controls
-- Signed remote activation and rollback-safe DLL updates
-- Ordered folder execution with a fresh capture after input, rapid clicking up to 10,000 times, and reliable inactive-window special-key input
+In the compact editor, `Esc` closes an overlay and `Enter` applies it. Outside an overlay, the same keys cancel or save the complete settings window. Open combo boxes and multiline fields keep their normal keyboard behavior.
 
-## Start here
+Download the complete [VisionFlow Studio 2.6.0 ZIP](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.6.0/VisionFlow-Studio-v2.6.0-win-x64.zip), extract it into a new folder, and run `VisionFlowStudio.exe`. See the [2.6.0 release notes](docs/VISIONFLOW_STUDIO_2.6.0.md) for the complete change list.
 
-1. Download the latest verified ZIP from [Public Releases](https://github.com/ko9ma7/YoloMacro-Distribution/releases/latest).
-2. Extract the archive and run `YoloMacro.exe`.
-3. When the signed activation manifest is valid, the app starts on the **RPA Execution** tab.
-4. Only disabled, expired, invalid-signature, network/response-error, or update-required states redirect to **Settings**.
-5. Use **Local Diagnostics** even while disabled to verify the core DLL, YOLO model, selected target window, and configured camera.
-6. Create or open a project, select a target window or camera, configure actions, then validate in **Observe** mode before real execution.
+The signing private key and GitHub Secret exist only in this repository. Policies do not expire automatically. An installed build remains usable until an administrator rotates its product channel or explicitly disables it through **Unified web activation management**.
 
-## Documentation
-
-| Document | Purpose |
-|---|---|
-| [English User Manual](docs/USER_MANUAL_EN.md) | Installation, activation, target/camera selection, execution, YOLO, AOI and labeling |
-| [Korean User Manual](docs/USER_MANUAL.md) | Complete Korean workflow and documentation map |
-| [Inspection System Guide](docs/INSPECTION_SYSTEM_GUIDE.md) | Production-oriented target/camera and YOLO/AOI architecture |
-| [YOLO Labeling and Training](docs/YOLO_LABELING_TRAINING_GUIDE.md) | Dataset capture, review, export, training and ONNX connection |
-| [Remote Activation and Update](docs/REMOTE_ACTIVATION_AND_UPDATE.md) | Signed manifest, cache, updater and rollback operations |
-| [Remote Activation and Update (English)](docs/REMOTE_ACTIVATION_AND_UPDATE_EN.md) | Public distribution boundary and administrator workflow |
-| [OCR and Visual Dictionary Guide](docs/OCR_AND_VISUAL_DICTIONARY_GUIDE_EN.md) | Text/number decisions, runtime variables and example-driven state classification |
-| [Target Identity Tracking Guide](docs/TARGET_IDENTITY_TRACKING_GUIDE_EN.md) | Separate input/tracking controls, fading targets, YOLO hybrid reacquisition and limits |
-| [v1.4.5 English Release Notes](docs/RELEASE_NOTES_1.4.5_EN.md) | Same-target tracking, migration and verification |
-| [v1.4.4 English Release Notes](docs/RELEASE_NOTES_1.4.4_EN.md) | Custom glyph OCR, hybrid fallback, adaptive target tracking and version clarity |
-| [v1.4.3 English Release Notes](docs/RELEASE_NOTES_1.4.3_EN.md) | General OCR, visual dictionaries and package requirements |
-| [v1.4.2 English Release Notes](docs/RELEASE_NOTES_1.4.2_EN.md) | Ordered flow, rapid click, inactive key input and stable runtime names |
-
-## Security and privacy boundary
-
-- The application never stores a GitHub password or embeds a repository token.
-- The GitHub button opens the public [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution) repository through the default browser session.
-- The public manifest is accepted only after ECDSA P-256 signature validation.
-- Update DLLs are accepted only when their SHA-256 matches the signed manifest.
-- Never publish customer images, label datasets, API keys, tokens, or signing private keys.
-
-## Build
-
-```powershell
-dotnet restore YoloMacro.sln --locked-mode
-dotnet build YoloMacro.sln -c Release --no-restore
-```
-
-Runtime: Windows, .NET 8 Desktop Runtime, and the native dependencies included in the verified release package. For v1.4.5, extract the complete ZIP so the Tesseract managed/native files and `tessdata` remain together.
+Private source remains in `ko9ma7/VisionFlow-Studio` and `ko9ma7/YoloMacro`; this public repository contains verified packages, documentation, Pages content, signed policies and release notes only.

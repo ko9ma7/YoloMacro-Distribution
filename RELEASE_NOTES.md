@@ -1,4 +1,22 @@
-# YoloMacro Release Notes
+# Distribution Release Notes
+
+## VisionFlow Studio v2.6.0 - 2026-08-12
+
+VisionFlow Studio가 이 Distribution의 최신 기본 제품이 되었습니다. Compact 작업 설정, 체크 후 오버레이로 여는 보조 기능, 기능 찾기·목적 기반 작업 생성, 다중 패턴 장기 추적과 통합 schema 3 웹 인증을 포함합니다.
+
+- 전체 설명: [`docs/VISIONFLOW_STUDIO_2.6.0.md`](docs/VISIONFLOW_STUDIO_2.6.0.md)
+- 공개 다운로드: [VisionFlow Studio v2.6.0](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0)
+- YoloMacro 1.4.x는 아래 기록과 기존 문서를 유지하는 레거시 제품선입니다.
+
+# YoloMacro Legacy Release Notes
+
+## v1.4.6 - 2026-08-12
+
+YoloMacro 1.4.6은 기존 1.4.x 프로젝트를 위한 레거시 유지 릴리스입니다. 새 프로젝트와 새 기능은 VisionFlow Studio 2.6을 기준으로 하며, YoloMacro의 패키지·문서·`ym-*` 웹 인증 정책은 호환성을 위해 계속 제공합니다.
+
+- 전체 설명: [`docs/YOLOMACRO_1.4.6.md`](docs/YOLOMACRO_1.4.6.md)
+- 공개 다운로드: [YoloMacro v1.4.6](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6)
+- 자동 만료 없이 웹 Action의 명시적 채널 회전 또는 비활성화 때만 잠깁니다.
 
 ## v1.4.5 - 2026-07-28
 

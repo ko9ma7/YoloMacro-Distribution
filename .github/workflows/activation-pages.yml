@@ -1,0 +1,128 @@
+name: Unified web activation management
+
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: "관리할 제품"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - yolomacro
+          - visionflow-studio
+      operation:
+        description: "웹 관리 작업"
+        required: true
+        default: "publish"
+        type: choice
+        options:
+          - publish
+          - rotate
+          - enable
+          - disable
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: unified-web-activation
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply operation, sign policies and record history
+        shell: pwsh
+        env:
+          ACTIVATION_SIGNING_KEY_PEM: ${{ secrets.ACTIVATION_SIGNING_KEY_PEM }}
+          CHANNEL_OPERATION: ${{ inputs.operation }}
+          CHANNEL_PRODUCT: ${{ inputs.product }}
+          SOURCE_BRANCH: ${{ github.ref_name }}
+          SOURCE_ACTOR: ${{ github.actor }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ($env:SOURCE_BRANCH -ne $env:DEFAULT_BRANCH) {
+            throw "Run activation management only from the default branch '$env:DEFAULT_BRANCH'."
+          }
+          if ([string]::IsNullOrWhiteSpace($env:ACTIVATION_SIGNING_KEY_PEM)) {
+            throw "ACTIVATION_SIGNING_KEY_PEM is not configured."
+          }
+
+          $policyPath = "activation/policy.json"
+          $historyPath = "activation/history.json"
+          $policy = Get-Content -LiteralPath $policyPath -Raw | ConvertFrom-Json
+          $targets = @($policy.products | Where-Object {
+            $env:CHANNEL_PRODUCT -eq "all" -or $_.productId -eq $env:CHANNEL_PRODUCT
+          })
+          if ($targets.Count -eq 0) { throw "No matching product policy was found." }
+
+          $history = if (Test-Path -LiteralPath $historyPath) {
+            @(Get-Content -LiteralPath $historyPath -Raw | ConvertFrom-Json)
+          } else { @() }
+          $changed = $false
+          foreach ($product in $targets) {
+            $productChanged = $false
+            switch ($env:CHANNEL_OPERATION) {
+              "rotate" {
+                $prefix = if ($product.productId -eq "yolomacro") { "ym" } else { "vfs" }
+                $random = [Convert]::ToHexString([Security.Cryptography.RandomNumberGenerator]::GetBytes(8)).ToLowerInvariant()
+                $product.channelId = "$prefix-$([DateTimeOffset]::UtcNow.ToString('yyyyMMdd'))-$random"
+                $product.enabled = $true
+                $productChanged = $true
+              }
+              "enable" { if (-not [bool]$product.enabled) { $product.enabled = $true; $productChanged = $true } }
+              "disable" { if ([bool]$product.enabled) { $product.enabled = $false; $productChanged = $true } }
+              "publish" { }
+              default { throw "Unsupported operation: $env:CHANNEL_OPERATION" }
+            }
+            if ($productChanged) {
+              $changed = $true
+              $history += [pscustomobject][ordered]@{
+                productId = [string]$product.productId
+                channelId = [string]$product.channelId
+                changedAtUtc = [DateTimeOffset]::UtcNow.ToString("O")
+                operation = $env:CHANNEL_OPERATION
+                actor = $env:SOURCE_ACTOR
+                sourceRef = $env:SOURCE_BRANCH
+              }
+            }
+          }
+          if ($changed) {
+            [IO.File]::WriteAllText($policyPath, ($policy | ConvertTo-Json -Depth 8), [Text.UTF8Encoding]::new($false))
+            [IO.File]::WriteAllText($historyPath, ($history | ConvertTo-Json -Depth 8), [Text.UTF8Encoding]::new($false))
+          }
+
+          if (Test-Path -LiteralPath "activation-output") {
+            Remove-Item -LiteralPath "activation-output" -Recurse -Force
+          }
+          ./tools/Publish-ActivationBundle.ps1 -OutputDirectory "activation-output"
+          Copy-Item -LiteralPath "activation-output/activation/yolomacro.json" -Destination "activation/yolomacro.json" -Force
+          Copy-Item -LiteralPath "activation-output/activation/visionflow-studio.json" -Destination "activation/visionflow-studio.json" -Force
+          Copy-Item -LiteralPath "activation-output/manifest.json" -Destination "manifest.json" -Force
+
+          git config user.name "Unified activation manager"
+          git config user.email "actions@users.noreply.github.com"
+          git add activation/policy.json activation/history.json activation/yolomacro.json activation/visionflow-studio.json manifest.json
+          git commit -m "chore: $env:CHANNEL_OPERATION $env:CHANNEL_PRODUCT activation"
+          git push origin "HEAD:$env:SOURCE_BRANCH"
+          gh api --method POST "repos/${{ github.repository }}/pages/builds"
+
+      - name: Upload signed policy evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-activation-policies
+          path: |
+            activation/yolomacro.json
+            activation/visionflow-studio.json
+            activation/policy.json
+            activation/history.json
+            activation/public-key.pem
+          if-no-files-found: error

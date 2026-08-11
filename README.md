@@ -4,6 +4,8 @@
 
 [한국어 README](README.md) · [English README](README.en.md) · [한국어 사용자 설명서](docs/USER_MANUAL.md) · [English User Manual](docs/USER_MANUAL_EN.md) · [공개 문서 사이트](https://ko9ma7.github.io/YoloMacro-Distribution/)
 
+YoloMacro와 VisionFlow Studio의 실행 잠금은 [통합 웹 인증 운영 가이드](docs/UNIFIED_WEB_ACTIVATION.md)에 따라 이 저장소의 GitHub Actions에서만 관리합니다.
+
 현재 정식 버전은 `1.4.5`입니다. 설치 파일과 공개 사용자 문서는 [YoloMacro-Distribution](https://github.com/ko9ma7/YoloMacro-Distribution)에, 소스·내부 구자료는 이 Private 저장소에 분리해 보관합니다.
 
 YoloMacro는 OpenCV, YOLO, AOI 검사, 메모리 읽기, 템플릿 기반 로직을 한 화면에서 조합해 쓰는 Windows 비전 RPA 매크로 도구입니다.

@@ -77,3 +77,32 @@ YoloMacro는 과거 1.4.x 프로젝트를 유지하기 위한 레거시 제품�
 | `ko9ma7/YoloMacro-Distribution` | 두 제품의 공개 패키지·문서·Pages·서명 정책과 인증 Action |
 
 고객 이미지, 프로젝트, 데이터셋, API 키, 토큰 또는 서명 개인키를 공개 저장소에 올리지 마세요.
+## 검색 및 관련 기술
+
+VisionFlow Studio와 YoloMacro는 Windows에서 화면 이미지와 객체를 인식해 마우스·키보드 입력, 조건 분기, 반복 작업을 자동화하는 **비전 기반 GUI 매크로 및 RPA 자동화 도구**입니다.
+
+일반적인 좌표 기반 마우스 매크로뿐 아니라 **이미지 인식 매크로, 화면 자동화, 게임 매크로, 업무 자동화, GUI 자동화, 컴퓨터 비전 자동화**가 필요한 경우 사용할 수 있도록 설계되어 있습니다.
+
+주요 관련 기술과 사용 분야:
+
+* Windows Macro / Windows Automation
+* Macro / GUI Macro / Mouse Macro / Keyboard Macro
+* RPA / Desktop Automation / GUI Automation
+* Image Recognition Macro / Image Matching Automation
+* Computer Vision Automation / Vision Automation
+* OpenCV Template Matching / OpenCV Automation
+* YOLO Object Detection / YOLO ONNX
+* OCR / Tesseract OCR / Screen OCR
+* AOI Inspection / Visual Inspection / Machine Vision
+* Object Detection / Object Tracking / Image Recognition
+* Mouse Click Automation / Keyboard Automation
+* Screen Automation / Desktop RPA
+* No-code / Low-code Vision Automation
+* 반복 작업 자동화 / 화면 인식 자동화 / 이미지 매크로
+* 이미지 서치 / 이미지 검색 / 이미지 클릭 매크로
+* 윈도우 매크로 / 마우스 매크로 / 키보드 매크로
+* 업무 자동화 / GUI 자동화 / 프로그램 자동화
+
+VisionFlow Studio는 단순 좌표 반복형 macro recorder보다 **현재 화면을 인식하고 판단한 뒤 동작하는 visual macro / intelligent automation**을 목표로 합니다. OpenCV 이미지 매칭, YOLO 객체 탐지, OCR 문자 인식, AOI 검사, 객체 추적과 조건 분기를 하나의 자동화 흐름에서 조합할 수 있습니다.
+
+**Keywords:** macro, windows macro, macro automation, gui macro, image macro, image recognition macro, mouse macro, keyboard macro, automation, windows automation, desktop automation, gui automation, rpa, desktop rpa, computer vision, computer vision automation, vision automation, opencv, opencv automation, template matching, image matching, image recognition, yolo, yolo onnx, object detection, object tracking, ocr, tesseract, screen ocr, aoi, visual inspection, machine vision, screen automation, mouse automation, keyboard automation.

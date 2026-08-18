@@ -2,6 +2,8 @@
 
 VisionFlow Studio 2.6.0은 YoloMacro 1.4.x의 비전 자동화 기능과 프로젝트 형식을 계승하고, 새 작업 생성·설정 구조·추적·배포 경계를 정리한 최신 제품선의 첫 공개 배포입니다.
 
+프로그램 버전은 `2.6.0`으로 유지하면서 비전 런타임을 OpenCvSharp/OpenCV `5.0.0.20260806`으로 갱신했습니다. 세부 호환성과 설치 주의사항은 [OpenCV 5 전환 문서](OPENCV5_MIGRATION.md)를 참고하세요.
+
 ## 설치와 업데이트
 
 - 전체 파일: `VisionFlow-Studio-v2.6.0-win-x64.zip`
@@ -51,11 +53,11 @@ VisionFlow Studio 2.6.0은 YoloMacro 1.4.x의 비전 자동화 기능과 프로�
 
 - Release 빌드 경고 0, 오류 0
 - 보안·업데이트 시나리오 18/18
-- 대상 동일성 추적 시나리오 12/12
+- 대상 동일성 추적 시나리오 13/13 (OpenCV 5 회전·스케일 특징점 및 오탐 거부 포함)
 - Workflow, Action Settings UI, YOLO/AOI/OCR 품질 스모크 통과
 - NuGet 취약 패키지 없음
 - GitHub Actions 패키지 생성과 공개 schema 3 서명 검증 완료
 
 ## English summary
 
-VisionFlow Studio 2.6.0 is the current Windows vision-automation product. It inherits the YoloMacro workflow format while adding a compact action editor, opt-in overlay settings, feature search, purpose-based task creation, multi-pattern long-term tracking, stronger project isolation, and a dedicated `visionflow-studio` web-managed release channel. Extract the complete ZIP into a new folder and use Observe mode before enabling real input.
+VisionFlow Studio 2.6.0 is the current Windows vision-automation product and now uses OpenCvSharp/OpenCV 5.0.0.20260806. It inherits the YoloMacro workflow format while adding a compact action editor, opt-in overlay settings, feature search, purpose-based task creation, multi-pattern long-term tracking, stronger project isolation, and a dedicated `visionflow-studio` web-managed release channel. Extract the complete ZIP into a new folder and use Observe mode before enabling real input.

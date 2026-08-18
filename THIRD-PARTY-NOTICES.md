@@ -1,19 +1,19 @@
 # Third-Party Notices
 
-YoloMacro uses the following components in addition to the dependencies listed by its generated SBOM.
+VisionFlow Studio uses the following components in addition to dependencies recorded by the source repository lock files and generated SBOM.
 
-## Tesseract .NET wrapper
+## OpenCV / OpenCvSharp
 
-- Project: `charlesw/tesseract`
-- Package: `Tesseract` 5.2.0
-- License: Apache License 2.0
-- Source: https://github.com/charlesw/tesseract
+- Projects: `opencv/opencv`, `shimat/opencvsharp`
+- Packages: `OpenCvSharp5`, `OpenCvSharp5.runtime.win`, `OpenCvSharp5.Extensions`
+- Version: `5.0.0.20260806`
+- Licenses: Apache License 2.0 / BSD 3-Clause (component dependent)
+- Sources: https://github.com/opencv/opencv, https://github.com/shimat/opencvsharp
 
-## Tesseract trained data
+## Tesseract
 
-- Project: `tesseract-ocr/tessdata_fast`
-- Included files: `eng.traineddata`, `kor.traineddata`
-- License: Apache License 2.0
-- Source: https://github.com/tesseract-ocr/tessdata_fast
+- Wrapper: `charlesw/tesseract` 5.2.0, Apache License 2.0
+- Language data: `tesseract-ocr/tessdata_fast`, Apache License 2.0
+- Sources: https://github.com/charlesw/tesseract, https://github.com/tesseract-ocr/tessdata_fast
 
 The original copyright and license terms remain with their respective authors.

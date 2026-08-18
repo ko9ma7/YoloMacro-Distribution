@@ -13,4 +13,4 @@ This repository is the public distribution hub for **VisionFlow Studio packages 
 
 Extract the complete ZIP into a new folder and run `VisionFlowStudio.exe`. Mixing individual OpenCV 4 and OpenCV 5 DLLs is unsupported. Use the published SHA-256 and JSON manifest to verify the package.
 
-Previous YoloMacro documents and screenshots are preserved under [`backup/yolomacro-1.4.x`](backup/yolomacro-1.4.x/README.md), while legacy binaries remain available from the existing [v1.4.6 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6).
+Previous YoloMacro documents, screenshots, and the replaced VisionFlow OpenCV 4 assets are indexed under [`backup/`](backup/README.md), while legacy binaries remain available from the existing [v1.4.6 release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6).

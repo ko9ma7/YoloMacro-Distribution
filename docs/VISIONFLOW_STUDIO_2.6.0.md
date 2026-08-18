@@ -7,6 +7,7 @@ VisionFlow Studio 2.6.0은 YoloMacro 1.4.x의 비전 자동화 기능과 프로�
 ## 설치와 업데이트
 
 - 전체 파일: `VisionFlow-Studio-v2.6.0-win-x64.zip`
+- 이전 OpenCV 4 패키지 보존본: `VisionFlow-Studio-v2.6.0-opencv4-backup.zip` (신규 설치에는 권장하지 않음)
 - 실행 파일: `VisionFlowStudio.exe`
 - 필요 환경: Windows, .NET 8 Desktop Runtime
 - 설치 방법: 기존 폴더에 일부 DLL만 덮어쓰지 말고 ZIP 전체를 새 폴더에 압축 해제

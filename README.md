@@ -21,7 +21,7 @@ ZIP 전체를 새 폴더에 풀고 `VisionFlowStudio.exe`를 실행하세요. �
 | `VisionFlow-Studio` | 기준 소스, 테스트, Visual Studio 솔루션, 패키지 빌드 |
 | `YoloMacro-Distribution` | 검증된 실행 ZIP, 해시, 릴리스 문서, 웹 인증 정책 |
 | `YoloMacro` | 수정하지 않는 1.4.x 레거시 소스 |
-| [`backup/yolomacro-1.4.x`](backup/yolomacro-1.4.x/README.md) | 이전 문서·화면 자료의 보존 위치 |
+| [`backup/`](backup/README.md) | 이전 문서·화면·OpenCV 4 배포 자산의 보존 안내 |
 
 ## 공개 경로 보존
 

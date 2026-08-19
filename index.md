@@ -9,6 +9,7 @@ title: VisionFlow Studio Distribution
 - [Download VisionFlow Studio 2.6.0](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0)
 - [VisionFlow Studio 2.6.0 release notes](docs/VISIONFLOW_STUDIO_2.6.0.md)
 - [OpenCV 5 migration and installation notes](docs/OPENCV5_MIGRATION.md)
+- [Color-invariant matching, Mini Run, pause, and backup guide](docs/IMAGE_MATCHING_MINI_RUN_2.6.0.md)
 - [Download legacy YoloMacro 1.4.6](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6)
 - [Browse the YoloMacro 1.4.x document backup](backup/yolomacro-1.4.x/README.md)
 - [Unified web activation operations](docs/UNIFIED_WEB_ACTIVATION.md)

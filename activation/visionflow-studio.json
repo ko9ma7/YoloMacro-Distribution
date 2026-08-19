@@ -5,10 +5,10 @@
   "enabled": true,
   "minimumVersion": "2.6.0",
   "latestVersion": "2.6.0",
-  "publishedAt": "2026-08-11T22:45:43.1379247+00:00",
+  "publishedAt": "2026-08-19T00:54:40.9868744+00:00",
   "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.6.0/VisionFlowStudio.CoreLib.dll",
   "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0",
   "dllVersion": "2.6.0",
-  "dllSha256": "1e26de4015859f3057f3188a763ce2bbc567bd09801eee9e6595effc777d2a6f",
-  "signature": "Kagl1AMze6fSLUzev+PTzrYIJMbZL4rY6M71ry8CBxtzYrZHJwvF4vs7Zcmq6JQrT8LFAc/X1C9AvmxhcJUdNw=="
+  "dllSha256": "ff95b3a55caaf921515403674d955c2468e9d4f1c708ede484175f217ee8068b",
+  "signature": "tw6Tn/d1N5BFCI59z71SjsR7exENAIOAn46hREmfskgailrq3G54uvAflyvVKJLNBWZ6A0o1yj6JR9TioMXcSA=="
 }

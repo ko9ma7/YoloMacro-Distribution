@@ -19,11 +19,11 @@
       "channelId": "vfs-20260811-01",
       "enabled": true,
       "minimumVersion": "2.6.0",
-      "latestVersion": "2.6.0",
-      "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.6.0/VisionFlowStudio.CoreLib.dll",
-      "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0",
-      "dllVersion": "2.6.0",
-      "dllSha256": "ff95b3a55caaf921515403674d955c2468e9d4f1c708ede484175f217ee8068b"
+      "latestVersion": "2.7.0",
+      "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.0/VisionFlowStudio.CoreLib.dll",
+      "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.7.0",
+      "dllVersion": "2.7.0",
+      "dllSha256": "fb55d199bd3ccf20b55b3e800ea6166bf31783b45df3b3bf8cfc6452ae138a8b"
     }
   ]
 }

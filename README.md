@@ -4,18 +4,18 @@
 
 ## 현재 배포
 
-- 제품 버전: `2.6.0` (버전 번호 유지)
+- 제품 버전: `2.7.0`
 - 비전 런타임: OpenCvSharp/OpenCV `5.0.0.20260806`
 - 플랫폼: Windows x64, .NET 8 Desktop Runtime
-- 다운로드: [VisionFlow Studio 2.6.0 Release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.6.0)
-- 직접 ZIP: [VisionFlow-Studio-v2.6.0-win-x64.zip](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.6.0/VisionFlow-Studio-v2.6.0-win-x64.zip)
-- 변경 내용: [VisionFlow Studio 2.6.0](docs/VISIONFLOW_STUDIO_2.6.0.md)
+- 다운로드: [VisionFlow Studio 2.7.0 Release](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.7.0)
+- 직접 ZIP: [VisionFlow-Studio-v2.7.0-win-x64.zip](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.0/VisionFlow-Studio-v2.7.0-win-x64.zip)
+- 변경 내용: [VisionFlow Studio 2.7.0](docs/VISIONFLOW_STUDIO_2.7.0.md)
 - OpenCV 5 전환: [OPENCV5_MIGRATION.md](docs/OPENCV5_MIGRATION.md)
-- 색상 불변 매칭·Mini 실행·일시정지: [사용 및 검증 가이드](docs/IMAGE_MATCHING_MINI_RUN_2.6.0.md)
+- 색상 불변 매칭·Mini 실행·일시정지: [사용 및 검증 가이드](docs/IMAGE_MATCHING_MINI_RUN_2.7.0.md)
 
 ZIP 전체를 새 폴더에 풀고 `VisionFlowStudio.exe`를 실행하세요. 일부 DLL만 이전 설치에 덮어쓰면 OpenCV 4/5 런타임이 섞일 수 있으므로 지원하지 않습니다. `.sha256`과 `.manifest.json`으로 다운로드 무결성과 빌드 정보를 확인할 수 있습니다.
 
-이번 2.6.0 실행 패키지는 Compact 설정의 색상 무시 값을 실제 OpenCV 런타임까지 일관되게 전달하고, 채널별 구조를 사용하는 색상 불변 매칭, 안전한 일시정지/재개, 항상 위 Mini 실행창, 충돌 없는 프로젝트 백업 40개 보존을 포함합니다.
+이번 2.7.0 실행 패키지는 OpenCV 5 전환과 함께 실제 커서·Interception용 자연 경로 이동, 탐지 Safe Click Zone, 정밀 최종 접근, 기존 프로젝트 호환과 액션 추가 직후 실행 검사 수정을 포함합니다.
 
 ## 저장소 역할
 
@@ -35,6 +35,7 @@ ZIP 전체를 새 폴더에 풀고 `VisionFlowStudio.exe`를 실행하세요. �
 - Release 빌드 경고 0, 오류 0
 - 보안·업데이터 18/18
 - 대상 추적·이미지 매칭 14/14 (OpenCV 5 회전·스케일, 색상 불변 구조 및 오탐 거부 포함)
+- 자연 마우스 경로 회귀 검사 통과
 - 연속 저장 백업 보존과 일시정지/재개 안전 경계 회귀 통과
 - 워크플로, Action Settings UI, YOLO/AOI/OCR 품질 스모크 통과
 - NuGet 알려진 취약 패키지 없음

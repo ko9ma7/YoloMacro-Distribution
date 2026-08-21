@@ -3,11 +3,11 @@
   "enabled": true,
   "minimumVersion": "1.4.0",
   "latestVersion": "1.4.6",
-  "publishedAt": "2026-08-21T03:42:31.3240286+00:00",
-  "expiresAt": "2036-08-18T03:42:31.3240286+00:00",
+  "publishedAt": "2026-08-21T03:46:44.8008194+00:00",
+  "expiresAt": "2036-08-18T03:46:44.8008194+00:00",
   "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v1.4.6/YoloMacro.CoreLib.dll",
   "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v1.4.6",
   "dllVersion": "1.4.6",
   "dllSha256": "cf4e4dbddbefdca2c243740be9a27178e68b40269addae710e15659e1807a289",
-  "signature": "raOjbJqajbj6BZK/nsrbjnHUc6rTgZ+jFeLhm/sTTseEhkaj9wpMN8/d41bw9IoJjkY+z7RsG7ZeHYwJCWqXdw=="
+  "signature": "owOjuJ6rbjsI47LM1yPvi863hgVZ8c3LDHwaHqNgM34nRuOx8ixKcvsFPNFPsYn1kwzGqbyrL1o2fEvN3IybJw=="
 }

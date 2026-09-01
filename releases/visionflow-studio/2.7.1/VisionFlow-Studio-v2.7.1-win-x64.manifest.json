@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "productId": "visionflow-studio",
+  "productVersion": "2.7.1",
+  "platform": "win-x64",
+  "targetFramework": "net8.0-windows",
+  "openCvPackage": "OpenCvSharp5",
+  "openCvPackageVersion": "5.0.0.20260806",
+  "releaseChannelId": "vfs-20260811-01",
+  "sourceRepository": "https://github.com/ko9ma7/VisionFlow-Studio",
+  "sourceCommit": "f2a99459ec86a7df44c444bbc9e786a36f26d950",
+  "builtAtUtc": "2026-09-01T00:51:42.2997298Z",
+  "files": {
+    "package": {
+      "name": "VisionFlow-Studio-v2.7.1-win-x64.zip",
+      "sha256": "5b311c5e3ccd918c06c33e9cad8b68c8751c2852dddd2a5d88437edcfaf7ba4c"
+    },
+    "coreLibrary": {
+      "name": "VisionFlowStudio.CoreLib.dll",
+      "sha256": "13e254d1a325cb40ad389c426084f4f54f2137b91818f6b32e0ffe012ecb0e57"
+    }
+  }
+}

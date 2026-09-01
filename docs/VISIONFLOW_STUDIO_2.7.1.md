@@ -19,9 +19,10 @@
 
 ## 패키지와 출처
 
-- 실행 ZIP: [`VisionFlow-Studio-v2.7.1-win-x64.zip`](../releases/visionflow-studio/2.7.1/VisionFlow-Studio-v2.7.1-win-x64.zip)
-- SHA-256: [`VisionFlow-Studio-v2.7.1-win-x64.zip.sha256`](../releases/visionflow-studio/2.7.1/VisionFlow-Studio-v2.7.1-win-x64.zip.sha256)
-- 빌드 manifest: [`VisionFlow-Studio-v2.7.1-win-x64.manifest.json`](../releases/visionflow-studio/2.7.1/VisionFlow-Studio-v2.7.1-win-x64.manifest.json)
+- 실행 ZIP: [`VisionFlow-Studio-v2.7.1-win-x64.zip`](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.1/VisionFlow-Studio-v2.7.1-win-x64.zip)
+- SHA-256: [`VisionFlow-Studio-v2.7.1-win-x64.zip.sha256`](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.1/VisionFlow-Studio-v2.7.1-win-x64.zip.sha256)
+- 빌드 manifest: [`VisionFlow-Studio-v2.7.1-win-x64.manifest.json`](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.1/VisionFlow-Studio-v2.7.1-win-x64.manifest.json)
+- 업데이트 CoreLib: [`VisionFlowStudio.CoreLib.dll`](https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.1/VisionFlowStudio.CoreLib.dll)
 - 기준 소스: [`ko9ma7/VisionFlow-Studio`](https://github.com/ko9ma7/VisionFlow-Studio)
 
 배포 폴더에는 소스 코드를 복사하지 않고 Windows x64 실행 패키지, CoreLib, 무결성 해시와 빌드 출처만 둡니다. ZIP 전체를 새 폴더에 풀어 사용하며 이전 설치에 DLL 일부만 덮어쓰지 않습니다.
@@ -30,8 +31,9 @@
 
 - Release 빌드: 경고 0, 오류 0
 - 실행 수명 주기·비활성 입력 회귀: 4/4
+- 자연스러운 마우스 경로 회귀: 통과
 - 대상 추적·이미지 매칭: 14/14
 - 보안·업데이터: 18/18
 - 패키지 EXE: 버전 2.7.1, 메인 창 응답과 정상 종료 확인
 
-서명된 웹 실행 정책과 GitHub Release는 Distribution의 관리 Action에서 2.7.1 CoreLib SHA-256으로 별도 게시해야 합니다. 저장소의 기존 `activation/visionflow-studio.json`은 유효한 서명을 보존하기 위해 로컬 커밋에서 임의 수정하지 않습니다.
+[서명된 웹 실행 정책](https://ko9ma7.github.io/YoloMacro-Distribution/activation/visionflow-studio.json)과 [GitHub Release v2.7.1](https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.7.1)은 Distribution 관리 Action에서 동일한 CoreLib SHA-256으로 게시했습니다. 저장소의 `activation/visionflow-studio.json`은 로컬에서 임의 수정하지 않고 관리 Action이 서명한 결과만 반영합니다.

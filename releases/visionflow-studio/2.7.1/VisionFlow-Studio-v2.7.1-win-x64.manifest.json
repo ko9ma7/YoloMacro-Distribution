@@ -8,16 +8,16 @@
   "openCvPackageVersion": "5.0.0.20260806",
   "releaseChannelId": "vfs-20260811-01",
   "sourceRepository": "https://github.com/ko9ma7/VisionFlow-Studio",
-  "sourceCommit": "f2a99459ec86a7df44c444bbc9e786a36f26d950",
-  "builtAtUtc": "2026-09-01T00:51:42.2997298Z",
+  "sourceCommit": "0fa607b276eb9f14f381c74d8423cc63b6c381d2",
+  "builtAtUtc": "2026-09-01T01:27:45.9452267Z",
   "files": {
     "package": {
       "name": "VisionFlow-Studio-v2.7.1-win-x64.zip",
-      "sha256": "5b311c5e3ccd918c06c33e9cad8b68c8751c2852dddd2a5d88437edcfaf7ba4c"
+      "sha256": "90c3d102c1d2eba972a5d683b67d62ed59774653688b66f832cf34e9abc66e4e"
     },
     "coreLibrary": {
       "name": "VisionFlowStudio.CoreLib.dll",
-      "sha256": "13e254d1a325cb40ad389c426084f4f54f2137b91818f6b32e0ffe012ecb0e57"
+      "sha256": "781058ee9717686dbc340d3cad0aa772360437ffa365fa00b34615247e304ecf"
     }
   }
 }

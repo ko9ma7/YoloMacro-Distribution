@@ -4,11 +4,11 @@
   "channelId": "vfs-20260811-01",
   "enabled": true,
   "minimumVersion": "2.6.0",
-  "latestVersion": "2.7.0",
-  "publishedAt": "2026-08-21T03:46:44.8008194+00:00",
-  "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.0/VisionFlowStudio.CoreLib.dll",
-  "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.7.0",
-  "dllVersion": "2.7.0",
-  "dllSha256": "595e3bac1ada7b62e094ca30bcbed142514ac5b752b06f97f778e8c4655b1505",
-  "signature": "syaDpCGMIM2u2Wlt9gQbqHyOEKNmwDw4HCJfcnh40UzBGPt2KHrozebGfnWb8DJX831VD0EKFBJwjksVPRaO+Q=="
+  "latestVersion": "2.7.1",
+  "publishedAt": "2026-09-01T01:18:55.3328820+00:00",
+  "updateUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/download/v2.7.1/VisionFlowStudio.CoreLib.dll",
+  "releaseNotesUrl": "https://github.com/ko9ma7/YoloMacro-Distribution/releases/tag/v2.7.1",
+  "dllVersion": "2.7.1",
+  "dllSha256": "060327cac3481dc67e4711a1aa99bea5bc5a5e00d9d6fb9b0ef98231067e18e1",
+  "signature": "RRDa5yi8fLCsmFbj0+RLMt6RgNQKDYvhbylQInILvjFj7BivUkykvT0sOPE8LHTU1oSstLpJNWnLayxno6G5Hw=="
 }
